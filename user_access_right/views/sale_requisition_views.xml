@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_sale_requisition_form_access" model="ir.ui.view">
+            <field name="name">whole.sale.requisition.form.access</field>
+            <field name="model">whole.sale.requisition</field>
+            <field name="inherit_id" ref="sale_requisition.view_sale_requisition_form"/>
+            <field name="arch" type="xml">
+                <button name="action_confirm" position="replace">
+                    <button name="action_confirm" string="Confirm"
+                            type="object" class="oe_highlight"
+                            groups="user_access_right.group_sr_confirm"
+                            attrs="{'invisible': [('state', 'not in', ['draft'])]}"/>
+                </button>
+                <button name="action_approved" position="replace">
+                    <button name="action_approved" string="Approved"
+                            type="object" class="oe_highlight" groups="user_access_right.group_sr_approve"
+                            attrs="{'invisible': [('state', 'not in', ['confirm'])]}"/>
+                </button>
+                <button name="action_cancel" position="replace">
+                    <button name="action_cancel" string="Cancel" type="object" class="btn-danger"
+                                attrs="{'invisible': ['|',('state', 'in', ['cancel','draft']),('is_picking_done','=',True)]}"/>
+                </button>
+            </field>
+        </record>
+    </data>
+</odoo>

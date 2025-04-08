@@ -1,0 +1,32 @@
+<odoo>
+    <record id="view_product_pricelist_form" model="ir.ui.view">
+        <field name="name">product.pricelist.form</field>
+        <field name="model">product.pricelist</field>
+        <field name="groups_id" eval="[(4, ref('multi_uom.group_uom_price'))]"/>
+        <field name="inherit_id" ref="multi_uom.view_product_pricelist_form_inherit"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='uom_pricelist_rules']" position="after">
+                <page name="pricelist_land" string="Price Rules" invisible="1">
+                  <field name="item_ids" nolabel="1" context="{'default_base':'list_price'}">
+                      <tree string="Pricelist Rules" editable="bottom">
+                          <field name="product_tmpl_id" string="Products" required="1"/>
+                          <field name="product_pricelist_item_id" invisible="1"/>
+                          <field name="product_id" string="Variants" groups="product.group_product_variant" domain="[('product_tmpl_id', '=', product_tmpl_id)]" options="{'no_create':1}"/>
+                          <field name="min_quantity"/>
+                          <field name="fixed_price" string="Price"/>
+                          <field name="currency_id" invisible="1"/>
+
+                          <field name="pricelist_id" invisible="1"/>
+                          <!-- Pricelist ID is here only for related fields to be correctly computed -->
+                          <field name="date_start"/>
+                          <field name="date_end"/>
+                          <field name="base" invisible="1"/>
+                          <field name="applied_on" invisible="1"/>
+                          <field name="company_id" invisible="1"/>
+                      </tree>
+                  </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

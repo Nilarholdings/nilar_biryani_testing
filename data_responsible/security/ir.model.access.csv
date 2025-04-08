@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_data_responsible,data.responsible,model_data_responsible,,1,1,1,1
+access_master_data_responsible,master.data.responsible,model_master_data_responsible,,1,1,1,1

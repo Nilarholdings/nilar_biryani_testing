@@ -1,0 +1,44 @@
+<odoo>
+    <data>
+        
+        <record id="car_way_new_tree" model="ir.ui.view">
+            <field name="name">car.way.tree</field>
+            <field name="model">car.way</field>
+            <field name="arch" type="xml">
+                <tree string="Car Way New">
+                    <header>
+                        <button name="action_car_way_report" type="object" string="Print PDF"
+                                class="oe_highlight ml16"/>
+                    </header>
+                    <field name="reference"/>
+                    <field name="date"/>
+                 
+
+                </tree>
+            </field>
+        </record>
+       
+        <record id="action_car_way_new" model="ir.actions.act_window">
+            <field name="name">Car Way</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">car.way</field>
+            <field name="context">{}</field>
+        </record>
+<!--         <menuitem id="menu_car_way_sale_root"
+                  name="Car Way"
+                  parent="sale.sale_menu_root"
+                  sequence="10"/>
+        <menuitem id="menu_car_way_sale"
+                  name="Car Way"
+                  sequence="4"
+                  parent="menu_car_way_sale_root"
+                  action="action_car_way"/>
+ -->
+        <menuitem
+            id="menu_car_way_new_report"
+            name="Car Way Form New"
+            action="action_car_way_new"
+            parent="car_way.menu_car_way_sale_root"
+            sequence="205"/>
+    </data>
+</odoo>

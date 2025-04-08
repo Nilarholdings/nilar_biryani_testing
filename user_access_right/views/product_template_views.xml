@@ -1,0 +1,174 @@
+<odoo>
+
+    <!--For Packing Product Menu-->
+    <record id="action_package_product" model="ir.actions.act_window">
+        <field name="name">Package Product</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="domain">['|',('repack', '=', True),('can_pack', '=', True)]</field>
+        <field name="context">{}</field>
+    </record>
+    <menuitem id="menu_package_product"
+              name="Package Products"
+              action="action_package_product"
+              parent="sale.sale_menu_root"
+              sequence="9"/>
+    <!--For Packing Product Menu-->
+
+<!--    &lt;!&ndash;Tab Access Product&ndash;&gt;-->
+<!--    <record id="product_template_form_view_inherit" model="ir.ui.view">-->
+<!--        <field name="name">product.template.form.inherit</field>-->
+<!--        <field name="model">product.template</field>-->
+<!--        <field name="inherit_id" ref="product.product_template_form_view"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//page[@name='general_information']" position="inside">-->
+<!--                <field name="inventory_product_tab_access" invisible="1"/>-->
+<!--                <field name="accounting_product_tab_access" invisible="1"/>-->
+<!--                <field name="variants_access" invisible="1"/>-->
+<!--                <field name="extra_price_access" invisible="1"/>-->
+<!--                <field name="inventory_packaging_access" invisible="1"/>-->
+<!--                <field name="in_out_access" invisible="1"/>-->
+<!--                <field name="lot_access" invisible="1"/>-->
+<!--                <field name="putaway_access" invisible="1"/>-->
+<!--                <field name="packing_sold_access" invisible="1"/>-->
+<!--                <field name="storage_categ_access" invisible="1"/>-->
+<!--            </xpath>-->
+<!--           <xpath expr="//page[@name='general_information']" position="attributes">-->
+<!--                <attribute name="groups">user_access_right.group_product_general_tab</attribute>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//page[@name='sales']" position="attributes">-->
+<!--                <attribute name="groups">user_access_right.group_product_sale_tab</attribute>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//page[@name='purchase']" position="attributes">-->
+<!--                <attribute name="groups">user_access_right.group_product_purchase_tab</attribute>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//page[@name='inventory']" position="attributes">-->
+<!--                <attribute name="attrs">{'invisible': [('inventory_product_tab_access', '!=', True)]}</attribute>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//page[@name='inventory']//group[@name='packaging']" position="attributes">-->
+<!--                <attribute name="attrs">{'invisible': [('inventory_packaging_access', '!=', True)]}</attribute>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//button[@name='open_pricelist_rules']" position="attributes">-->
+<!--                <attribute name="groups">user_access_right.group_inventory_packaging</attribute>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//button[@name='open_pricelist_rules']" position="attributes">-->
+<!--                <attribute name="attrs">{'invisible': [('extra_price_access', '!=', True)]}</attribute>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+<!--    <record id="product_template_form_view_inherit_account" model="ir.ui.view">-->
+<!--        <field name="name">product.template.form.inherit.account</field>-->
+<!--        <field name="model">product.template</field>-->
+<!--        <field name="inherit_id" ref="account.product_template_form_view"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//page[@name='invoicing']" position="attributes">-->
+<!--                <attribute name="attrs">{'invisible': [('accounting_product_tab_access', '!=', True)]}</attribute>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+<!--   <record id="product_template_form_view_inherit_multi_uom" model="ir.ui.view">-->
+<!--        <field name="name">product.template.form.inherit.multi.uom</field>-->
+<!--        <field name="model">product.template</field>-->
+<!--        <field name="inherit_id" ref="multi_uom.product_template_form_view_inherit"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//page[@name='multi_uom']" position="attributes">-->
+<!--                <attribute name="groups">user_access_right.group_product_multi_uom_tab</attribute>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+<!--    <record id="product_template_only_form_view_inherit_minimun" model="ir.ui.view">-->
+<!--        <field name="name">product.template.form.inherit.minimun</field>-->
+<!--        <field name="model">product.template</field>-->
+<!--        <field name="inherit_id" ref="product_extend.product_template_only_form_view_inherit"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//page[@name='minium']" position="attributes">-->
+<!--                <attribute name="groups">user_access_right.group_product_minimum_tab</attribute>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+<!--    <record id="product_template_only_form_view_inherit_variant" model="ir.ui.view">-->
+<!--        <field name="name">product.template.form.inherit.variant</field>-->
+<!--        <field name="model">product.template</field>-->
+<!--        <field name="inherit_id" ref="product.product_template_only_form_view"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//page[@name='variants']" position="attributes">-->
+<!--                <attribute name="groups">user_access_right.group_product_sale_tab</attribute>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+<!--    &lt;!&ndash;Tab Access Product&ndash;&gt;-->
+
+<!--    <record id="product_template_form_view_procurement_button" model="ir.ui.view">-->
+<!--        <field name="name">product.template.stock.form.inherit.variant</field>-->
+<!--        <field name="model">product.template</field>-->
+<!--        <field name="inherit_id" ref="stock.product_template_form_view_procurement_button"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//button[@name='action_open_quants']" position="attributes">-->
+<!--                <attribute name="groups">user_access_right.group_product_onhand</attribute>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//button[@name='action_product_tmpl_forecast_report']" position="attributes">-->
+<!--                <attribute name="groups">user_access_right.group_product_forecast</attribute>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//button[@name='action_view_stock_move_lines']" position="attributes">-->
+<!--                <attribute name="attrs">{'invisible': [('in_out_access', '!=', True)]}</attribute>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//button[@name='action_view_orderpoints'][1]" position="attributes">-->
+<!--                <attribute name="groups">user_access_right.group_product_reordering_rule</attribute>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//button[@name='action_view_orderpoints'][2]" position="attributes">-->
+<!--                <attribute name="groups">user_access_right.group_product_reordering_rule</attribute>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//button[@name='action_open_product_lot']" position="attributes">-->
+<!--                <attribute name="attrs">{'invisible':[('lot_access', '!=', True)]}</attribute>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//button[@name='action_view_related_putaway_rules']" position="attributes">-->
+<!--                <attribute name="attrs">{'invisible':[('putaway_access', '!=', True)]}</attribute>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//button[@name='action_view_storage_category_capacity']" position="attributes">-->
+<!--                <attribute name="attrs">{'invisible':[('storage_categ_access', '!=', True)]}</attribute>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+
+
+<!--    <record id="product_template_form_view_sale_order_button" model="ir.ui.view">-->
+<!--        <field name="name">product.template.sale.form.inherit.variant</field>-->
+<!--        <field name="model">product.template</field>-->
+<!--        <field name="inherit_id" ref="sale_stock.product_template_view_form_inherit_stock"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//button[@name='action_view_sales']" position="attributes">-->
+<!--                <attribute name="attrs">{'invisible':  [('packing_sold_access', '!=', True)]}</attribute>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+<!--    <record id="view_product_template_mrp_buttons_from" model="ir.ui.view">-->
+<!--        <field name="name">product.template.mrp.form.inherit.variant</field>-->
+<!--        <field name="model">product.template</field>-->
+<!--        <field name="inherit_id" ref="mrp.product_template_form_view_bom_button"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//button[@name='473']" position="attributes">-->
+<!--                <attribute name="groups">user_access_right.group_product_bom</attribute>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//button[@name='action_used_in_bom']" position="attributes">-->
+<!--                <attribute name="groups">user_access_right.group_product_bom</attribute>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//button[@name='action_view_mos']" position="attributes">-->
+<!--                <attribute name="groups">user_access_right.group_product_bom</attribute>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+
+<!--    <record id="view_product_template_purchase_buttons_from" model="ir.ui.view">-->
+<!--        <field name="name">product.template.purchase.form.inherit.variant</field>-->
+<!--        <field name="model">product.template</field>-->
+<!--        <field name="inherit_id" ref="purchase.view_product_template_purchase_buttons_from"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//button[@name='action_view_po']" position="attributes">-->
+<!--                <attribute name="groups">user_access_right.group_product_purchase</attribute>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+
+
+</odoo>

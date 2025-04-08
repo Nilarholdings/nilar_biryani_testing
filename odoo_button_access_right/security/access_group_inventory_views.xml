@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <!--Inventory(Stock) Module Button Access Right-->
+        <record model="ir.module.category" id="module_inventory_button_access">
+            <field name="name">Button Access(Inventory)</field>
+            <field name="sequence">305</field>
+        </record>
+        <record id="group_cancel_access_transfer" model="res.groups">
+            <field name="name">Cancel(Transfer)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_inventory_button_access"/>
+        </record>
+        <record id="group_mark_as_to_do_access_transfer" model="res.groups">
+            <field name="name">Mark as To Do(Transfer)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_inventory_button_access"/>
+        </record>
+        <record id="group_lock_unlock_access_transfer" model="res.groups">
+            <field name="name">Lock/Unlock(Transfer)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_inventory_button_access"/>
+        </record>
+        <record id="group_set_quantities_access_transfer" model="res.groups">
+            <field name="name">Set Quantities(Transfer)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_inventory_button_access"/>
+        </record>
+        <record id="group_validate_access_transfer" model="res.groups">
+            <field name="name">Validate(Transfer)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_inventory_button_access"/>
+        </record>
+        <record id="group_put_in_pack_access_transfer" model="res.groups">
+            <field name="name">Put In Pack(Transfer)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_inventory_button_access"/>
+        </record>
+        <record id="group_return_access_transfer" model="res.groups">
+            <field name="name">Return(Transfer)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_inventory_button_access"/>
+        </record>
+        <record id="group_apply_access_adjustment" model="res.groups">
+            <field name="name">Apply(Adjustment)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_inventory_button_access"/>
+        </record>
+        <record id="group_clear_access_adjustment" model="res.groups">
+            <field name="name">Clear(Adjustment)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_inventory_button_access"/>
+        </record>
+        <record id="group_request_a_count_access_adjustment" model="res.groups">
+            <field name="name">Request A Count(Adjustment)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_inventory_button_access"/>
+        </record>
+        <record id="group_validate_access_multi_scrap" model="res.groups">
+            <field name="name">Validate(Multi Scrap)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_inventory_button_access"/>
+        </record>
+        <record id="group_repackage_access_unpacking" model="res.groups">
+            <field name="name">Repackage(Unpacking)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_inventory_button_access"/>
+        </record>
+        <record id="group_validate_access_unpacking" model="res.groups">
+            <field name="name">Validate(Unpacking)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_inventory_button_access"/>
+        </record>
+        <record id="group_reset_access_unpacking" model="res.groups">
+            <field name="name">Reset to Draft(Unpacking)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_inventory_button_access"/>
+        </record>
+        <record id="group_package_access_packing" model="res.groups">
+            <field name="name">Package(Packing)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_inventory_button_access"/>
+        </record>
+        <record id="group_reset_access_packing" model="res.groups">
+            <field name="name">Reset to Draft(Packing)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_inventory_button_access"/>
+        </record>
+        <record id="group_validate_access_packing" model="res.groups">
+            <field name="name">Validate(Packing)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_inventory_button_access"/>
+        </record>
+        <record id="group_set_to_verified_access_sr" model="res.groups">
+            <field name="name">Set to Verified(Stock Requisition)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_inventory_button_access"/>
+        </record>
+    </data>
+</odoo>

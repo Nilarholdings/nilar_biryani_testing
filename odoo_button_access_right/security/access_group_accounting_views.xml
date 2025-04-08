@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <!-- Acccounting Module Button Access Right-->
+        <record model="ir.module.category" id="module_accounting_button_access">
+            <field name="name">Button Access(Accounting)</field>
+            <field name="sequence">306</field>
+        </record>
+        <record id="group_confirm_access_accounting" model="res.groups">
+            <field name="name">Confirm</field>
+            <field name="category_id" ref="odoo_button_access_right.module_accounting_button_access"/>
+        </record>
+        <record id="group_cancel_access_accounting" model="res.groups">
+            <field name="name">Cancel</field>
+            <field name="category_id" ref="odoo_button_access_right.module_accounting_button_access"/>
+        </record>
+        <record id="group_reset_access_accounting" model="res.groups">
+            <field name="name">Reset to Draft</field>
+            <field name="category_id" ref="odoo_button_access_right.module_accounting_button_access"/>
+        </record>
+        <record id="group_register_payment_access_accounting" model="res.groups">
+            <field name="name">Register Payment</field>
+            <field name="category_id" ref="odoo_button_access_right.module_accounting_button_access"/>
+        </record>
+        <record id="group_credit_note_access_accounting" model="res.groups">
+            <field name="name">Add Credit Note</field>
+            <field name="category_id" ref="odoo_button_access_right.module_accounting_button_access"/>
+        </record>
+        <record id="group_confirm_access_payment" model="res.groups">
+            <field name="name">Confirm(Payment)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_accounting_button_access"/>
+        </record>
+        <record id="group_cancel_access_payment" model="res.groups">
+            <field name="name">Cancel(Payment)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_accounting_button_access"/>
+        </record>
+        <record id="group_reset_access_payment" model="res.groups">
+            <field name="name">Reset to Draft(Payment)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_accounting_button_access"/>
+        </record>
+        <record id="group_post_access_je" model="res.groups">
+            <field name="name">Post(JE)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_accounting_button_access"/>
+        </record>
+        <record id="group_cancel_access_je" model="res.groups">
+            <field name="name">Cancel Entry(JE)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_accounting_button_access"/>
+        </record>
+        <record id="group_reset_access_je" model="res.groups">
+            <field name="name">Reset to Draft(JE)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_accounting_button_access"/>
+        </record>
+        <record id="group_reverse_access_je" model="res.groups">
+            <field name="name">Reverse Entry(JE)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_accounting_button_access"/>
+        </record>
+        <record id="group_confirm_access_assets" model="res.groups">
+            <field name="name">Confirm(Assets)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_accounting_button_access"/>
+        </record>
+        <record id="group_compute_depre_access_assets" model="res.groups">
+            <field name="name">Compute Depreciation(Assets)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_accounting_button_access"/>
+        </record>
+        <record id="group_sell_dispose_access_assets" model="res.groups">
+            <field name="name">Sell or Dispose(Assets)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_accounting_button_access"/>
+        </record>
+        <record id="group_pause_depre_access_assets" model="res.groups">
+            <field name="name">Pause Depreciation(Assets)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_accounting_button_access"/>
+        </record>
+        <record id="group_modify_depre_access_assets" model="res.groups">
+            <field name="name">Modify Depreciation(Assets)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_accounting_button_access"/>
+        </record>
+        <record id="group_save_model_access_assets" model="res.groups">
+            <field name="name">Save Model(Assets)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_accounting_button_access"/>
+        </record>
+        <record id="group_reset_access_assets" model="res.groups">
+            <field name="name">Set to Draft(Assets)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_accounting_button_access"/>
+        </record>
+    </data>
+</odoo>

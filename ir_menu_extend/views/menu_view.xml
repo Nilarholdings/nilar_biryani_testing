@@ -1,0 +1,65 @@
+<odoo>
+    <data>
+        <menuitem id="nl_custom_menu" name="Custom Menu" groups="ir_menu_extend.group_custom_menu_access"
+            web_icon="ir_menu_extend,static/description/icon.png">
+            <menuitem id="menu_employee_custom_information" name="Employees" sequence="5">
+                <menuitem id="menu_employee_custom"
+                            name="Employees"
+                            action="hr_employee_action_custom"
+                            groups="ir_menu_extend.group_custom_employee_menu_access"
+                            sequence="5"/>
+            </menuitem>
+            <menuitem id="menu_product_custom_information" name="Products" sequence="10">
+                <menuitem id="menu_product_custom"
+                            name="Products"
+                            action="product_template_action_custom"
+                            groups="ir_menu_extend.group_custom_product_menu_access"
+                            sequence="5"/>
+            </menuitem>
+            <menuitem id="menu_report_custom" name="Reporting" sequence="15">
+                <menuitem id="pos_report_custom_menu" name="Point of Sale" sequence="10">
+                    <menuitem id="custom_menu_pos_line_report"
+                                name="POS Line Report"
+                                action="custom_excel_reports.pos_stock_report_action"
+                                sequence="5"/>
+                    <menuitem id="custom_menu_pos_sub_location_report"
+                        name="POS Sub-Location Report"
+                        action="custom_excel_reports.pos_sub_location_report_action"
+                        sequence="10"/>
+                </menuitem>
+                <menuitem id="inventory_report_custom_menu" name="Inventory" sequence="10">
+                    <menuitem id="custom_menu_stock_received_report"
+                        name="Stock Received Report"
+                        action="custom_excel_reports.stock_received_report_action"
+                        sequence="5"/>
+                </menuitem>
+            </menuitem>
+            <menuitem id="menu_configuration_custom" name="Configuration" sequence="20">
+                <menuitem id="custom_menu_pos_sub_location"
+                    name="POS Sub Location"
+                    action="custom_excel_reports.pos_sub_stock_action"
+                    sequence="5"/>
+            </menuitem>
+        </menuitem>
+        <menuitem id="menu_pos_extra_config" parent="point_of_sale.menu_point_config_product"
+                    sequence="11" groups="base.group_no_one" name="POS Config">
+            <menuitem id="menu_restaurant_table_all"
+                 action="ir_menu_extend.action_restaurant_table_form"
+                 sequence="5"
+                 groups="base.group_no_one"/>
+            <menuitem id="menu_pricelist_item"
+                 action="ir_menu_extend.action_pricelist_item"
+                 sequence="10"
+                 groups="base.group_no_one"/>
+<!--            <menuitem id="menu_multi_uom_line"-->
+<!--                 action="ir_menu_extend.action_multi_uom_line"-->
+<!--                 sequence="15"-->
+<!--                 groups="base.group_no_one"/>-->
+<!--            <menuitem id="menu_mrp_bom_line"-->
+<!--                 action="ir_menu_extend.action_mrp_bom_line"-->
+<!--                 sequence="20"-->
+<!--                 groups="base.group_no_one"/>-->
+        </menuitem>
+
+    </data>
+</odoo>

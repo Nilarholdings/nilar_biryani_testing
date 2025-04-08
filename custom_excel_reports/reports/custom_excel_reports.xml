@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_hr_employee_form_inherit_full_name" model="ir.ui.view">
+        <field name="name">hr.employee.form</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='mobile_phone']" position="before">
+                <field name="current_employee_name"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="hr_kanban_view_employees_current_employee" model="ir.ui.view">
+        <field name="name">hr.employee.kanban</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.hr_kanban_view_employees"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='category_ids']" position="before">
+                <field name="current_employee_name"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_employee_filter_current_employee" model="ir.ui.view">
+        <field name="name">hr.employee.search</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="current_employee_name" string="Current Employee"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="employee_access_excel_report" model="ir.actions.report">
+        <field name="name">Employee Access Report(Excel)</field>
+        <field name="model">hr.employee</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">custom_excel_reports.employee_access_excel_report</field>
+        <field name="report_file">custom_excel_reports.employee_access_excel_report</field>
+        <field name="print_report_name">'Employee Access Report(Excel)'</field>
+        <field name="binding_model_id" ref="hr.model_hr_employee"/>
+    </record>
+   <!--  <record id="employee_access_excel_report" model="ir.actions.report">
+        <field name="name">Employee Access Report(Excel)</field>
+        <field name="model">hr.employee</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">custom_excel_reports.employee_access_excel_report</field>
+        <field name="report_file">custom_excel_reports.employee_access_excel_report</field>
+        <field name="print_report_name">'Employee Access Report(Excel)'</field>
+        <field name="binding_model_id" ref="hr.model_hr_employee"/>
+    </record> --> 
+</odoo>

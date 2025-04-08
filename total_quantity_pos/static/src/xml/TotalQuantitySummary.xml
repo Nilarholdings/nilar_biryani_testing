@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Views for showing the total items and quantities in the Pos Screen -->
+<templates id="template" xml:space="preserve">
+   <t t-name="OrderSummaryNew" t-inherit="point_of_sale.OrderSummary"
+      t-inherit-mode="extension" owl="1">
+      <xpath expr="//div[hasclass('total')]" position="after">
+          <!-- <t t-if="env.pos.config.pos_total_screen"> -->
+              <br/>
+              <div style="font-size: 20px;">
+                  Total without Taxes:
+                  <span class="value">
+                      <t t-esc="total_without_tax"/>
+                  </span>
+              </div>
+              <div class="total_qty">
+                  <div class="values" style="font-size: 20px;">
+                      <!-- <span class="badge">Total Items : <t t-esc="total_items"/></span>
+                      <br/> -->
+                      <span class="value">Total Quantity : <t
+                              t-esc="quant_count"/></span>
+                  </div>
+              </div>
+          <!-- </t> -->
+      </xpath>
+   </t>
+</templates>

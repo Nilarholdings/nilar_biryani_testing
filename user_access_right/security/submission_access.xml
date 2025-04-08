@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record model="ir.module.category" id="module_submission_access">
+            <field name="name">Submission of Quotation Access</field>
+            <field name="sequence">209</field>
+        </record>
+        <record id="group_sq_submit" model="res.groups">
+            <field name="name">Access SQ Submit</field>
+            <field name="category_id" ref="user_access_right.module_submission_access"/>
+        </record>
+         <record id="group_sq_confirm" model="res.groups">
+            <field name="name">Access SQ Confirm</field>
+            <field name="category_id" ref="user_access_right.module_submission_access"/>
+        </record>
+        <record id="group_sq_check" model="res.groups">
+            <field name="name">Access SQ Checked</field>
+            <field name="category_id" ref="user_access_right.module_submission_access"/>
+        </record>
+        <record id="group_sq_approve" model="res.groups">
+            <field name="name">Access SQ Approved</field>
+            <field name="category_id" ref="user_access_right.module_submission_access"/>
+        </record>
+        <record id="group_sq_cancel" model="res.groups">
+            <field name="name">Access SQ Cancel</field>
+            <field name="category_id" ref="user_access_right.module_submission_access"/>
+        </record>
+    </data>
+</odoo>

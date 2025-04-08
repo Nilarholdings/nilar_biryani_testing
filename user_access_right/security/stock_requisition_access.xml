@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record model="ir.module.category" id="module_stock_requisition_access">
+            <field name="name">Stock Requisition Access</field>
+            <field name="sequence">210</field>
+        </record>
+        <record id="group_str_submit" model="res.groups">
+            <field name="name">Access STR Submit</field>
+            <field name="category_id" ref="user_access_right.module_stock_requisition_access"/>
+        </record>
+         <record id="group_str_verified" model="res.groups">
+            <field name="name">Access STR Verified</field>
+            <field name="category_id" ref="user_access_right.module_stock_requisition_access"/>
+        </record>
+        <record id="group_str_approve" model="res.groups">
+            <field name="name">Access STR Approved</field>
+            <field name="category_id" ref="user_access_right.module_stock_requisition_access"/>
+        </record>
+        <record id="group_str_confirm" model="res.groups">
+            <field name="name">Access STR Confirm</field>
+            <field name="category_id" ref="user_access_right.module_stock_requisition_access"/>
+        </record>
+        <record id="group_str_cancel" model="res.groups">
+            <field name="name">Access STR Cancel</field>
+            <field name="category_id" ref="user_access_right.module_stock_requisition_access"/>
+        </record>
+    </data>
+</odoo>

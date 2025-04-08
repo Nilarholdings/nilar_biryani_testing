@@ -1,0 +1,84 @@
+<odoo>
+    <data>
+        <record id="view_sale_order_form_inherit" model="ir.ui.view">
+            <field name="name">sale.order.form.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="options">{'no_open':True}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='partner_invoice_id']" position="attributes">
+                    <attribute name="options">{'no_open':True}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='partner_shipping_id']" position="attributes">
+                    <attribute name="options">{'no_open':True}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='partner_shipping_id']" position="attributes">
+                    <attribute name="options">{'no_open':True}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='warehouse_id']" position="attributes">
+                    <attribute name="options">{'no_create': True, 'no_open': True}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='analytic_account_id']" position="attributes">
+                    <attribute name="options">{'no_create': True, 'no_open': True}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='user_id']" position="attributes">
+                    <attribute name="options">{'no_create': True, 'no_open': True}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='team_id']" position="attributes">
+                    <attribute name="options">{'no_create': True, 'no_open': True}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='order_line']//tree//field[@name='product_id']" position="after">
+                     <field
+                            name="product_id"
+                            class="product_cus"
+                            attrs="{
+                                'readonly': [('product_updatable', '=', False)],
+                                'required': [('display_type', '=', False)],
+                            }"
+                            options="{'no_create': True,'no_open': True,'no_quick_create': True}"
+                            force_save="1"
+                            domain="[('sale_ok', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"
+                        />
+                 </xpath>
+                <xpath expr="//field[@name='order_line']//tree//field[@name='analytic_tag_ids']" position="attributes">
+                     <attribute name="options">{'no_open':True}</attribute>
+                 </xpath>
+                <xpath expr="//field[@name='order_line']//form//field[@name='product_id']" position="after">
+                     <field
+                            name="product_id"
+                            class="product_cus"
+                            attrs="{
+                                'readonly': [('product_updatable', '=', False)],
+                                'required': [('display_type', '=', False)],
+                            }"
+                            options="{'no_create': True,'no_open': True,'no_quick_create': True}"
+                            force_save="1"
+                            domain="[('sale_ok', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"
+                        />
+                 </xpath>
+                <xpath expr="//field[@name='order_line']//form//field[@name='analytic_tag_ids']" position="attributes">
+                     <attribute name="options">{'no_open':True}</attribute>
+                 </xpath>
+
+            </field>
+        </record>
+
+        <record id="view_order_form_inherit_sale_stock_inherit" model="ir.ui.view">
+            <field name="name">sale.order.inherit.extend</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_stock.view_order_form_inherit_sale_stock"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='warehouse_id']" position="attributes">
+                    <attribute name="options">{'no_create': True,'no_open':True}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='order_line']//tree//field[@name='route_id'][1]" position="attributes">
+                    <attribute name="options">{'no_create': True,'no_open':True}</attribute>
+                </xpath>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

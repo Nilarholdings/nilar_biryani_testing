@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <!--Purchase Module Button Access Right-->
+        <record model="ir.module.category" id="module_purchase_button_access">
+            <field name="name">Button Access(Purchase)</field>
+            <field name="sequence">303</field>
+        </record>
+        <record id="group_send_by_mail_access_po" model="res.groups">
+            <field name="name">Sent By Mail(PO)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_purchase_button_access"/>
+        </record>
+        <record id="group_set_to_draft_access_po" model="res.groups">
+            <field name="name">Set to Draft(PO)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_purchase_button_access"/>
+        </record>
+        <record id="group_lock_unlock_access_po" model="res.groups">
+            <field name="name">Lock/Unlock(PO)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_purchase_button_access"/>
+        </record>
+        <record id="group_receive_products_access_po" model="res.groups">
+            <field name="name">Receive Products(PO)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_purchase_button_access"/>
+        </record>
+        <record id="group_create_bill_access_po" model="res.groups">
+            <field name="name">Create Bill(PO)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_purchase_button_access"/>
+        </record>
+        <record id="group_create_purchase_agg_access_pr" model="res.groups">
+            <field name="name">Create Purchase Agreement(Purchase Requisition Detail)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_purchase_button_access"/>
+        </record>
+        <record id="group_confirm_access_pa" model="res.groups">
+            <field name="name">Confirm(Purchase Agreement)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_purchase_button_access"/>
+        </record>
+        <record id="group_cancel_access_pa" model="res.groups">
+            <field name="name">Cancel(Purchase Agreement)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_purchase_button_access"/>
+        </record>
+        <record id="group_reset_to_draft_access_pa" model="res.groups">
+            <field name="name">Reset to Draft(Purchase Agreement)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_purchase_button_access"/>
+        </record>
+    </data>
+</odoo>

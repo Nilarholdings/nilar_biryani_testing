@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- for saleable category-->
+    <record id="product_category_form_view_inheritance" model="ir.ui.view">
+        <field name="name">product.category.form.extend</field>
+        <field name="model">product.category</field>
+        <field name="inherit_id" ref="product.product_category_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='is_used']" position="after">
+                <field name="x_selling_category"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="product_category_tree_view_inheritance" model="ir.ui.view">
+        <field name="name">product.category.tree.extend</field>
+        <field name="model">product.category</field>
+        <field name="inherit_id" ref="product.product_category_list_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='is_used']" position="after">
+                <field name="x_selling_category"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!--    mobile customer-->
+    <record id="customer_form_view_inheritance" model="ir.ui.view">
+        <field name="name">res.partner.form.extend</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='phone']" position="attributes">
+                <attribute name="attrs">{'required': [('x_is_a_mobile', '=', True), ('customer', '=', True)]}</attribute>
+            </xpath>
+            <xpath expr="//notebook//page[@name='sales_purchases']//group[@name='sale']//field[@name='customer']" position="before">
+                    <field name="x_is_a_mobile"/>
+            </xpath>
+            <xpath expr="//field[@name='city']" position="before">
+                    <field name="x_city_id" placeholder="..." attrs="{'invisible': [('customer', '=', False)], 'required': [('customer', '=', True)]}" context="{'state_id': state_id, 'default_state_id': state_id}"/>
+            </xpath>
+
+            <xpath expr="//field[@name='type']" position="attributes">
+                <attribute name="readonly">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='category_id']" position="after">
+                    <field name="x_mobile_latitude"/>
+             </xpath>
+            <xpath expr="//field[@name='x_mobile_latitude']" position="after">
+                    <field name="x_mobile_longitude"/>
+             </xpath>
+            <xpath expr="//notebook//page//field[@name='child_ids']//form//group//field[@name='mobile']" position="after">
+                <field name="x_mobile_latitude" />
+            </xpath>
+            <xpath expr="//notebook//page//field[@name='child_ids']//form//group//field[@name='x_mobile_latitude']" position="after">
+                <field name="x_mobile_longitude" />
+            </xpath>
+            <xpath expr="//notebook//page//field[@name='child_ids']//form//group//field[@name='city']" position="before">
+                <field name="x_city_id" placeholder="City..."
+                   context="{'state_id': state_id, 'default_state_id': state_id}" />
+            </xpath>
+        </field>
+    </record>
+    <record id="customer_tree_view_inheritance" model="ir.ui.view">
+        <field name="name">res.partner.tree.extend</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='category_id']" position="after">
+                <field name="x_is_a_mobile"/>
+
+            </xpath>
+<!--            <xpath expr="//field[@name='x_is_a_mobile']" position="after">-->
+<!--                <field name="x_city_id"/>-->
+
+<!--            </xpath>-->
+        </field>
+    </record>
+
+    <!--    default Country-->
+    <record id="country_form_view_inheritance" model="ir.ui.view">
+        <field name="name">res.country.form.extend</field>
+        <field name="model">res.country</field>
+        <field name="inherit_id" ref="base.view_country_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='state_required']" position="after">
+                <field name="default_country"/>
+            </xpath>
+
+        </field>
+    </record>
+    <record id="country_tree_view_inheritance" model="ir.ui.view">
+        <field name="name">res.country.tree.extend</field>
+        <field name="model">res.country</field>
+        <field name="inherit_id" ref="base.view_country_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='code']" position="after">
+                <field name="default_country"/>
+
+            </xpath>
+        </field>
+    </record>
+
+    <!--    Mobile Pricelist-->
+    <record id="pricelist_form_view_inheritance" model="ir.ui.view">
+        <field name="name">product.pricelist.form.extend</field>
+        <field name="model">product.pricelist</field>
+        <field name="inherit_id" ref="product.product_pricelist_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='currency_id']" position="after">
+                <field name="mobile_pricelist"/>
+            </xpath>
+
+        </field>
+    </record>
+    <record id="pricelist_tree_view_inheritance" model="ir.ui.view">
+        <field name="name">product.pricelist.tree.extend</field>
+        <field name="model">product.pricelist</field>
+        <field name="inherit_id" ref="product.product_pricelist_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='currency_id']" position="after">
+                <field name="mobile_pricelist"/>
+
+            </xpath>
+        </field>
+    </record>
+
+    <!--    Tax for mobile-->
+    <record id="taxes_form_view_inheritance" model="ir.ui.view">
+        <field name="name">account.tax.form.extend</field>
+        <field name="model">account.tax</field>
+        <field name="inherit_id" ref="account.view_tax_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='active']" position="after">
+                <field name="mobile_tax"/>
+            </xpath>
+
+        </field>
+    </record>
+    <record id="taxes_tree_view_inheritance" model="ir.ui.view">
+        <field name="name">account.tax.tree.extend</field>
+        <field name="model">account.tax</field>
+        <field name="inherit_id" ref="account.view_tax_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='active']" position="after">
+                <field name="mobile_tax"/>
+
+            </xpath>
+        </field>
+    </record>
+
+    <!--    mobile sale team-->
+    <record id="sale_team_form_view_inheritance" model="ir.ui.view">
+        <field name="name">crm.team.form.extend</field>
+        <field name="model">crm.team</field>
+        <field name="inherit_id" ref="sales_team.crm_team_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="mobile_sale"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="sale_team_tree_view_inheritance" model="ir.ui.view">
+        <field name="name">crm.team.tree.extend</field>
+        <field name="model">crm.team</field>
+        <field name="inherit_id" ref="sales_team.crm_team_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="mobile_sale"/>
+            </xpath>
+        </field>
+    </record>
+
+
+        <!--    mobile payment-->
+    <record id="account_payment_term_form_view_inheritance" model="ir.ui.view">
+        <field name="name">account.payment.term.form.extend</field>
+        <field name="model">account.payment.term</field>
+        <field name="inherit_id" ref="account.view_payment_term_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="mobile_payment_term"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="account_payment_term_tree_view_inheritance" model="ir.ui.view">
+        <field name="name">account.payment.term.tree.extend</field>
+        <field name="model">account.payment.term</field>
+        <field name="inherit_id" ref="account.view_payment_term_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="mobile_payment_term"/>
+            </xpath>
+        </field>
+    </record>
+
+            <!--    pos location-->
+    <record id="pos_location_form_view_inheritance" model="ir.ui.view">
+        <field name="name">pos_location.form.extend</field>
+        <field name="model">pos.location</field>
+        <field name="inherit_id" ref="analytic_user.pos_location_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet//group" position="before">
+                <div class="oe_button_box" name="button_box">
+                    <button string="Current Stock" class="oe_stat_button" icon="fa-cubes"
+                            name="action_get_stock_quant" type="object"/>
+                </div>
+            </xpath>
+            <xpath expr="//group//group[1]" position="after">
+                <group>
+                    <field name="location_id"/>
+                    <field name="analytic_account_id"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+    <record id="pos_location_tree_view_inheritance" model="ir.ui.view">
+        <field name="name">pos.location.tree.extend</field>
+        <field name="model">pos.location</field>
+        <field name="inherit_id" ref="analytic_user.location_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='description']" position="after">
+                <field name="location_id"/>
+                <field name="analytic_account_id"/>
+            </xpath>
+        </field>
+    </record>
+
+
+
+
+</odoo>

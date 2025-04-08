@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- for market payment-->
+    <record id="marketing_payment_form_view_inheritance" model="ir.ui.view">
+        <field name="name">marketing.payment.form.extend</field>
+        <field name="model">pos.payment.method</field>
+        <field name="inherit_id" ref="point_of_sale.pos_payment_method_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='journal_id']" position="after">
+                <field name="marketing_payment"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="marketing_payment_tree_view_inheritance" model="ir.ui.view">
+        <field name="name">marketing.payment.tree.extend</field>
+        <field name="model">pos.payment.method</field>
+        <field name="inherit_id" ref="point_of_sale.pos_payment_method_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='journal_id']" position="after">
+                <field name="marketing_payment"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!--    marketing Customer-->
+    <record id="marketing_customer_form_view_inheritance" model="ir.ui.view">
+        <field name="name">res.partner.form.extend</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//notebook//page[@name='sales_purchases']//group[@name='sale']//field[@name='user_id']" position="before">
+                    <field name="x_marketing_customer"/>
+            </xpath>
+
+
+        </field>
+    </record>
+<!--    <record id="marketing_customer_tree_view_inheritance" model="ir.ui.view">-->
+<!--        <field name="name">res.partner.tree.extend</field>-->
+<!--        <field name="model">res.partner</field>-->
+<!--        <field name="inherit_id" ref="base.view_partner_tree"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//field[@name='country_id']" position="after">-->
+<!--                <field name="x_marketing_customer"/>-->
+
+<!--            </xpath>-->
+<!--&lt;!&ndash;            <xpath expr="//field[@name='x_is_a_mobile']" position="after">&ndash;&gt;-->
+<!--&lt;!&ndash;                <field name="x_city_id"/>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            </xpath>&ndash;&gt;-->
+<!--        </field>-->
+<!--    </record>-->
+
+        <!--    marketing account-->
+    <record id="marketing_account_form_view_inheritance" model="ir.ui.view">
+        <field name="name">account.analytic.account.form.extend</field>
+        <field name="model">account.analytic.account</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_account_form"/>
+        <field name="arch" type="xml">
+          <xpath expr="//field[@name='currency_id']" position="after">
+                <field name="marketing_account"/>
+          </xpath>
+        </field>
+    </record>
+    <record id="marketing_account_tree_view_inheritance" model="ir.ui.view">
+        <field name="name">account.analytic.account.tree.extend</field>
+        <field name="model">account.analytic.account</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_account_list"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='balance']" position="after">
+                <field name="marketing_account"/>
+            </xpath>
+
+        </field>
+    </record>
+
+        <!--    Marketing Pricelist-->
+    <record id="marketing_pricelist_form_view_inheritance" model="ir.ui.view">
+        <field name="name">product.pricelist.form.extend</field>
+        <field name="model">product.pricelist</field>
+        <field name="inherit_id" ref="product.product_pricelist_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='currency_id']" position="before">
+                <field name="marketing_pricelist"/>
+            </xpath>
+
+        </field>
+    </record>
+    <record id="marketing_pricelist_tree_view_inheritance" model="ir.ui.view">
+        <field name="name">product.pricelist.tree.extend</field>
+        <field name="model">product.pricelist</field>
+        <field name="inherit_id" ref="product.product_pricelist_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='currency_id']" position="before">
+                <field name="marketing_pricelist"/>
+
+            </xpath>
+        </field>
+    </record>
+
+        <!--    mobile sale team-->
+    <record id="marketing_team_form_view_inheritance" model="ir.ui.view">
+        <field name="name">marketing.team.form.extend</field>
+        <field name="model">crm.team</field>
+        <field name="inherit_id" ref="sales_team.crm_team_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="before">
+                <field name="marketing_sale"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="marketing_team_tree_view_inheritance" model="ir.ui.view">
+        <field name="name">crm.team.tree.extend</field>
+        <field name="model">crm.team</field>
+        <field name="inherit_id" ref="sales_team.crm_team_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="before">
+                <field name="marketing_sale"/>
+            </xpath>
+        </field>
+    </record>
+
+            <!--    mobile payment-->
+    <record id="marketing_payment_term_form_view_inheritance" model="ir.ui.view">
+        <field name="name">marketing.payment.term.form.extend</field>
+        <field name="model">account.payment.term</field>
+        <field name="inherit_id" ref="account.view_payment_term_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="before">
+                <field name="marketing_payment_term"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="marketing_payment_term_tree_view_inheritance" model="ir.ui.view">
+        <field name="name">marketing.payment.term.tree.extend</field>
+        <field name="model">account.payment.term</field>
+        <field name="inherit_id" ref="account.view_payment_term_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="before">
+                <field name="marketing_payment_term"/>
+            </xpath>
+        </field>
+    </record>
+
+
+        <!--    Tax for mobile-->
+    <record id="marketing_taxes_form_view_inheritance" model="ir.ui.view">
+        <field name="name">marketing.account.tax.form.extend</field>
+        <field name="model">account.tax</field>
+        <field name="inherit_id" ref="account.view_tax_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='active']" position="before">
+                <field name="marketing_tax"/>
+            </xpath>
+
+        </field>
+    </record>
+    <record id="marketing_taxes_tree_view_inheritance" model="ir.ui.view">
+        <field name="name">account.tax.tree.extend</field>
+        <field name="model">account.tax</field>
+        <field name="inherit_id" ref="account.view_tax_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='active']" position="before">
+                <field name="marketing_tax"/>
+
+            </xpath>
+        </field>
+    </record>
+
+        <!-- for mobile payment-->
+    <record id="mobile_payment_form_view_inheritance" model="ir.ui.view">
+        <field name="name">mobile.payment.form.extend</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='team_id']" position="after">
+                <field name="payment_method_id"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="mobile_payment_tree_view_inheritance" model="ir.ui.view">
+        <field name="name">marketing.payment.tree.extend</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='team_id']" position="after">
+                <field name="payment_method_id"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="payment_form_view_inheritance" model="ir.ui.view">
+        <field name="name">payment.form.extend</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='picking_number']" position="after">
+                <field name="mobile_payment_method_id"
+                   widget="res_partner_many2one"
+                   attrs="{'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund', 'in_invoice', 'in_refund', 'out_receipt', 'in_receipt'))]}" />
+            </xpath>
+        </field>
+    </record>
+    <record id="payment_tree_view_inheritance" model="ir.ui.view">
+        <field name="name">payment.tree.extend</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_invoice_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='invoice_date_due']" position="after">
+                <field name="mobile_payment_method_id"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="Marketing_location_form_view_inheritance" model="ir.ui.view">
+        <field name="name">Marketing.location.form.extend</field>
+        <field name="model">stock.location</field>
+        <field name="inherit_id" ref="stock.view_location_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='next_inventory_date']" position="after">
+                <field name="marketing_location"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="Marketing_location_tree_view_inheritance" model="ir.ui.view">
+        <field name="name">Marketing.location.tree.extend</field>
+        <field name="model">stock.location</field>
+        <field name="inherit_id" ref="stock.view_location_tree2"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='usage']" position="after">
+                <field name="marketing_location"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

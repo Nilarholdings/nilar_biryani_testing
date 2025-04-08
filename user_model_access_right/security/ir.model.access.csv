@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_model.access_right.lines,access.model.access_right.lines,model_model_access_right_lines,base.group_user,1,1,1,1
+"access_ir_model_group_employee","ir_model group_employee_user","model_ir_model","group_employee_user_access",1,0,0,0

@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <!--Product Form Tab Access Right-->
+        <record model="ir.module.category" id="module_package_product">
+            <field name="name">Product Access</field>
+            <field name="sequence">210</field>
+        </record>
+        <record id="group_product_general_tab" model="res.groups">
+            <field name="name">Access General Tab</field>
+            <field name="category_id" ref="user_access_right.module_package_product"/>
+        </record>
+        <record id="group_product_sale_tab" model="res.groups">
+            <field name="name">Access Sale Tab</field>
+            <field name="category_id" ref="user_access_right.module_package_product"/>
+        </record>
+        <record id="group_product_purchase_tab" model="res.groups">
+            <field name="name">Access Purchase Tab</field>
+            <field name="category_id" ref="user_access_right.module_package_product"/>
+        </record>
+        <record id="group_product_inventory_tab" model="res.groups">
+            <field name="name">Access Inventory Tab</field>
+            <field name="category_id" ref="user_access_right.module_package_product"/>
+        </record>
+        <record id="group_product_accounting_tab" model="res.groups">
+            <field name="name">Access Accounting Tab</field>
+            <field name="category_id" ref="user_access_right.module_package_product"/>
+       </record>
+        <record id="group_product_multi_uom_tab" model="res.groups">
+            <field name="name">Access Multi Uom Tab</field>
+            <field name="category_id" ref="user_access_right.module_package_product"/>
+        </record>
+        <record id="group_product_minimum_tab" model="res.groups">
+            <field name="name">Access Minimun Tab</field>
+            <field name="category_id" ref="user_access_right.module_package_product"/>
+        </record>
+        <record id="group_product_variants_tab" model="res.groups">
+            <field name="name">Access Variants Tab</field>
+            <field name="category_id" ref="user_access_right.module_package_product"/>
+        </record>
+
+        <!--Product Form Btn Access Right-->
+        <record id="group_product_extra_price" model="res.groups">
+            <field name="name">Access Extra Prices</field>
+            <field name="category_id" ref="user_access_right.module_package_product"/>
+        </record>
+        <record id="group_product_onhand" model="res.groups">
+            <field name="name">Access On Hand</field>
+            <field name="category_id" ref="user_access_right.module_package_product"/>
+        </record>
+        <record id="group_product_forecast" model="res.groups">
+            <field name="name">Access Forecast</field>
+            <field name="category_id" ref="user_access_right.module_package_product"/>
+        </record>
+        <record id="group_product_in_out" model="res.groups">
+            <field name="name">Access In Out</field>
+            <field name="category_id" ref="user_access_right.module_package_product"/>
+        </record>
+        <record id="group_product_reordering_rule" model="res.groups">
+            <field name="name">Access Reordering</field>
+            <field name="category_id" ref="user_access_right.module_package_product"/>
+        </record>
+        <record id="group_product_lot" model="res.groups">
+            <field name="name">Access Lot/Serial</field>
+            <field name="category_id" ref="user_access_right.module_package_product"/>
+        </record>
+        <record id="group_product_putaway" model="res.groups">
+            <field name="name">Access Putaway</field>
+            <field name="category_id" ref="user_access_right.module_package_product"/>
+        </record>
+        <record id="group_storage_categ" model="res.groups">
+            <field name="name">Access Storage Capacities</field>
+            <field name="category_id" ref="user_access_right.module_package_product"/>
+        </record>
+
+        <record id="group_product_sold" model="res.groups">
+            <field name="name">Access Sold</field>
+            <field name="category_id" ref="user_access_right.module_package_product"/>
+        </record>
+        <record id="group_product_bom" model="res.groups">
+            <field name="name">Access BOM</field>
+            <field name="category_id" ref="user_access_right.module_package_product"/>
+        </record>
+
+        <record id="group_product_purchase" model="res.groups">
+            <field name="name">Access Purchase</field>
+            <field name="category_id" ref="user_access_right.module_package_product"/>
+        </record>
+
+        <record id="group_inventory_packaging" model="res.groups">
+            <field name="name">Access Inventory Packaging</field>
+            <field name="category_id" ref="user_access_right.module_package_product"/>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,277 @@
+<odoo>
+	<record id="product_template_kanban_view_custom" model="ir.ui.view">
+        <field name="name">Product.template.product.kanban</field>
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <kanban sample="1" create="false">
+                <field name="id"/>
+                <field name="product_variant_count"/>
+                <field name="currency_id"/>
+                <field name="activity_state"/>
+                <progressbar field="activity_state" colors='{"planned": "success", "today": "warning", "overdue": "danger"}'/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_card oe_kanban_global_click">
+                            <div class="o_kanban_image mr-1">
+                                <img t-att-src="kanban_image('product.template', 'image_128', record.id.raw_value)" alt="Product" class="o_image_64_contain"/>
+                            </div>
+                            <div class="oe_kanban_details">
+                                <div class="o_kanban_record_top mb-0">
+                                    <div class="o_kanban_record_headings">
+                                        <strong class="o_kanban_record_title">
+                                            <field name="name"/>
+                                        </strong>
+                                    </div>
+                                    <field name="priority" widget="priority"/>
+                                </div>
+                                <t t-if="record.default_code.value">[<field name="default_code"/>]</t>
+                                <div t-if="record.product_variant_count.value &gt; 1" groups="product.group_product_variant">
+                                    <strong>
+                                        <t t-esc="record.product_variant_count.value"/> Variants
+                                    </strong>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+	<record id="view_product_template_tree_custom" model="ir.ui.view">
+        <field name="name">product.template.tree</field>
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <tree string="Products" create="false" delete="false">
+                <field name="name"/>
+                <field name="default_code"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_product_template_form_custom" model="ir.ui.view">
+        <field name="name">product.template.form</field>
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <form string="Employees" create="false" delete="false">
+                <sheet>
+                	<field name="image_1920" widget="image" class="oe_avatar" options="{'preview_image': 'image_128'}"/>
+                	<div class="oe_title">
+                        <label for="name" string="Product Name"/>
+                        <h1>
+                            <div class="d-flex">
+                                <field name="priority" widget="priority" class="mr-3" readonly="1"/>
+                                <field class="o_text_overflow" name="name" placeholder="e.g. Cheese Burger" readonly="1"/>
+                            </div>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="default_code" readonly="1"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="view_product_template_search_custom" model="ir.ui.view">
+        <field name="name">product.template.search</field>
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <search string="Product Search">
+                <field name="name" string="Product" filter_domain="['|', ('default_code', 'ilike', self), ('name', 'ilike', self)]"/>
+            </search>
+        </field>
+    </record>
+    <record id="product_template_action_custom" model="ir.actions.act_window">
+        <field name="name">Products</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="search_view_id" ref="view_product_template_search_custom"/>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('product_template_kanban_view_custom')}),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('view_product_template_tree_custom')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('view_product_template_form_custom')})]"/>
+    </record>
+
+    <record model="ir.ui.view" id="view_backorder_confirmation_access_extend">
+        <field name="name">stock.backorder.confirmation</field>
+        <field name="model">stock.backorder.confirmation</field>
+        <field name="inherit_id" ref="stock.view_backorder_confirmation"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='process_cancel_backorder']" position="attributes">
+                <attribute name="groups">ir_menu_extend.group_no_back_order_access</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Pricelist Item -->
+    <record id="view_pricelist_item_tree" model="ir.ui.view">
+        <field name="name">Pricelist Item</field>
+        <field name="model">pricelist.item.uom</field>
+        <field name="arch" type="xml">
+            <tree string="Pricelist Item">
+                <field name="pricelist_id"/>
+                <field name="product_id"/>
+                <field name="multi_uom_line_id"/>
+                <field name="price" />
+                <field name="pricelist_qty"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_pricelist_item_form" model="ir.ui.view">
+        <field name="name">pricelist.item.form</field>
+        <field name="model">pricelist.item.uom</field>
+        <field name="arch" type="xml">
+            <form string="Pricelist Item">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="pricelist_id"/>
+                            <field name="product_id"/>
+                            <field name="multi_uom_line_id"/>
+                            <field name="price" />
+                            <field name="pricelist_qty"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_pricelist_item" model="ir.actions.act_window">
+        <field name="name">Pricelist Items</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pricelist.item.uom</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+                 (0, 0, {'view_mode': 'tree', 'view_id': ref('view_pricelist_item_tree')}),
+                 (0, 0, {'view_mode': 'form', 'view_id': ref('view_pricelist_item_form')})]"/>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Add a new item with pricelist
+          </p>
+        </field>
+    </record>
+
+    <!-- Multi UOM Line -->
+    <record id="view_multi_uom_line_tree" model="ir.ui.view">
+        <field name="name">Multi UOM Line</field>
+        <field name="model">multi.uom.line</field>
+        <field name="arch" type="xml">
+            <tree string="Multi UOM Lines">
+                <field name="uom_id"/>
+                <field name="price"/>
+                <field name="ratio"/>
+                <field name="product_tmpl_id" />
+                <field name="is_default_uom"/>
+                <field name="uom_code"/>
+                <field name="remark"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_multi_uom_line_form" model="ir.ui.view">
+        <field name="name">multi.uom.line.form</field>
+        <field name="model">multi.uom.line</field>
+        <field name="arch" type="xml">
+            <form string="Multi UOM Lines">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="uom_id"/>
+                            <field name="price"/>
+                            <field name="ratio"/>
+                            <field name="product_tmpl_id" />
+                            <field name="is_default_uom"/>
+                            <field name="uom_code"/>
+                            <field name="remark"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_multi_uom_line" model="ir.actions.act_window">
+        <field name="name">Multi UOM Lines</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">multi.uom.line</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+                 (0, 0, {'view_mode': 'tree', 'view_id': ref('view_multi_uom_line_tree')}),
+                 (0, 0, {'view_mode': 'form', 'view_id': ref('view_multi_uom_line_form')})]"/>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Add a new multi uom line for product
+          </p>
+        </field>
+    </record>
+
+    <!-- MRP BOM Line -->
+    <record id="view_mrp_bom_line_tree" model="ir.ui.view">
+        <field name="name">BOM Line</field>
+        <field name="model">mrp.bom.line</field>
+        <field name="arch" type="xml">
+            <tree string="BOM Lines">
+                <field name="product_id"/>
+                <field name="product_tmpl_id"/>
+                <field name="product_qty"/>
+                <field name="product_uom_id" />
+                <field name="sequence"/>
+                <field name="bom_id"/>
+                <field name="multi_uom_line_id"/>
+                <field name="product_multi_uom_qty"/>
+                <field name="company_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_mrp_bom_line_form_extend" model="ir.ui.view">
+        <field name="name">mrp.bom.line.form</field>
+        <field name="model">mrp.bom.line</field>
+        <field name="arch" type="xml">
+            <form string="BOM Lines">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="product_id"/>
+                            <field name="product_tmpl_id"/>
+                            <field name="product_qty"/>
+                            <field name="product_uom_id" />
+                            <field name="sequence"/>
+                            <field name="bom_id"/>
+                            <field name="multi_uom_line_id"/>
+                            <field name="product_multi_uom_qty"/>
+                            <field name="company_id"/>
+                            <field name="product_uom_category_id"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_mrp_bom_line" model="ir.actions.act_window">
+        <field name="name">MRP BOM Lines</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mrp.bom.line</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+                 (0, 0, {'view_mode': 'tree', 'view_id': ref('view_mrp_bom_line_tree')}),
+                 (0, 0, {'view_mode': 'form', 'view_id': ref('view_mrp_bom_line_form_extend')})]"/>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Add a new MRP BOM Line for product
+          </p>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_data_responsible_tree" model="ir.ui.view">
+        <field name="name">data.responsible.tree</field>
+        <field name="model">data.responsible</field>
+        <field name="arch" type="xml">
+            <tree string="Responsible" delete="false">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_data_responsible_form" model="ir.ui.view">
+        <field name="name">data.responsible.form</field>
+        <field name="model">data.responsible</field>
+        <field name="arch" type="xml">
+            <form string="Responsible" delete="false">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="view_data_responsible_search" model="ir.ui.view">
+        <field name="name">data.responsible.search</field>
+        <field name="model">data.responsible</field>
+        <field name="arch" type="xml">
+            <search string="Responsible">
+                <field name="name"/>
+                <filter string="Responsible" name="group_by_name" context="{'group_by':'name'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_data_responsible" model="ir.actions.act_window">
+            <field name="name">Responsible</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">data.responsible</field>
+            <field name="view_id" ref="view_data_responsible_tree"/>
+        </record>
+
+    <menuitem name="Responsible"
+              id="menu_data_responsible"
+              action="action_data_responsible"
+              parent="base.menu_users"
+              sequence="15"/>
+
+    <!-- Master Data Reponsible -->
+    <record id="view_master_data_responsible_tree" model="ir.ui.view">
+        <field name="name">master.data.responsible.tree</field>
+        <field name="model">master.data.responsible</field>
+        <field name="arch" type="xml">
+            <tree string="Master Data Responsible" delete="false">
+                <field name="name"/>
+                <field name="responsible_ids" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_master_data_responsible_form" model="ir.ui.view">
+        <field name="name">master.data.responsible.form</field>
+        <field name="model">master.data.responsible</field>
+        <field name="arch" type="xml">
+            <form string="Master Data Responsible" delete="false">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="responsible_ids" widget="many2many_tags" options="{'no_create': True, 'no_open': True}"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="view_master_data_responsible_search" model="ir.ui.view">
+        <field name="name">master.data.responsible.search</field>
+        <field name="model">master.data.responsible</field>
+        <field name="arch" type="xml">
+            <search string="Master Data Responsible">
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_master_data_responsible" model="ir.actions.act_window">
+            <field name="name">Master Data Responsible</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">master.data.responsible</field>
+            <field name="view_id" ref="view_master_data_responsible_tree"/>
+        </record>
+
+    <menuitem name="Master Data Responsible"
+              id="menu_master_data_responsible"
+              action="action_master_data_responsible"
+              parent="base.menu_users"
+              sequence="16"/>
+</odoo>

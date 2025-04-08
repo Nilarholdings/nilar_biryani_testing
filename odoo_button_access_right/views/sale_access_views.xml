@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_order_form_button_access_inherit" model="ir.ui.view">
+            <field name="name">sale.order.form.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="priority">99</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='%(sale.action_view_sale_advance_payment_inv)d'][1]" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_create_invoice_access_ws</attribute>
+                </xpath>
+                <xpath expr="//button[@name='%(sale.action_view_sale_advance_payment_inv)d'][2]" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_create_invoice_access_ws</attribute>
+                </xpath>
+                <button name="action_sale_requisition" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_create_requisition_access_ws</attribute>
+                </button>
+                <button name="action_draft" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_sent_to_quotation_access_ws</attribute>
+                </button>
+                <xpath expr="//button[@name='action_quotation_send'][1]" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_sent_by_email_access_ws</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_quotation_send'][2]" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_sent_by_email_access_ws</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_quotation_send'][3]" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_sent_by_email_access_ws</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_quotation_send'][4]" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_sent_by_email_access_ws</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_retail_sale_form_button_access_inherit" model="ir.ui.view">
+            <field name="name">whole.sale.requisition.form.inherit</field>
+            <field name="model">whole.sale.requisition</field>
+            <field name="priority">99</field>
+            <field name="inherit_id" ref="sale_requisition.view_sale_requisition_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_confirm'][2]" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_reset_to_confirm_access_rs</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

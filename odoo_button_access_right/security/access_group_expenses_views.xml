@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <!--Expenses Module Button Access Right-->
+        <record model="ir.module.category" id="module_expenses_button_access">
+            <field name="name">Button Access(Expenses)</field>
+            <field name="sequence">304</field>
+        </record>
+        <record id="group_attach_receipt_access_expense" model="res.groups">
+            <field name="name">Attach Receipt(Expenses)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_expenses_button_access"/>
+        </record>
+        <record id="group_create_report_access_expense" model="res.groups">
+            <field name="name">Create Report(Expenses)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_expenses_button_access"/>
+        </record>
+        <record id="group_view_report_access_expense" model="res.groups">
+            <field name="name">View Report(Expenses)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_expenses_button_access"/>
+        </record>
+        <record id="group_submit_mgr_access_expense_report" model="res.groups">
+            <field name="name">Submit to Manager(Reports)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_expenses_button_access"/>
+        </record>
+        <record id="group_approve_access_expense_report" model="res.groups">
+            <field name="name">Approve(Reports)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_expenses_button_access"/>
+        </record>
+        <record id="group_refuse_access_expense_report" model="res.groups">
+            <field name="name">Refuse(Reports)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_expenses_button_access"/>
+        </record>
+        <record id="group_reset_access_expense_report" model="res.groups">
+            <field name="name">Reset to Draft(Reports)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_expenses_button_access"/>
+        </record>
+        <record id="group_post_journal_access_expense_report" model="res.groups">
+            <field name="name">Post Journal Entries(Reports)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_expenses_button_access"/>
+        </record>
+        <record id="group_register_payment_access_expense_report" model="res.groups">
+            <field name="name">Register Payment(Reports)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_expenses_button_access"/>
+        </record>
+        <record id="group_cancel_access_expense_report" model="res.groups">
+            <field name="name">Cancel(Reports)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_expenses_button_access"/>
+        </record>
+    </data>
+</odoo>

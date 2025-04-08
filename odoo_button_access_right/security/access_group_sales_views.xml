@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <!--Sales Module Button Access Right-->
+        <record model="ir.module.category" id="module_sale_button_access">
+            <field name="name">Button Access(Sale)</field>
+            <field name="sequence">301</field>
+        </record>
+        <record id="group_create_invoice_access_ws" model="res.groups">
+            <field name="name">Create Invoice(Wholesales)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_sale_button_access"/>
+        </record>
+        <record id="group_create_requisition_access_ws" model="res.groups">
+            <field name="name">Create Requisition(Wholesales)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_sale_button_access"/>
+        </record>
+        <record id="group_sent_to_quotation_access_ws" model="res.groups">
+            <field name="name">Sent to Quotation(Wholesales)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_sale_button_access"/>
+        </record>
+        <record id="group_sent_by_email_access_ws" model="res.groups">
+            <field name="name">Sent by Email(Wholesales)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_sale_button_access"/>
+        </record>
+        <record id="group_reset_to_confirm_access_rs" model="res.groups">
+            <field name="name">Reset to Confirm(Retail Sale)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_sale_button_access"/>
+        </record>
+        <!--Point of Sales Module Button Access Right-->
+        <record model="ir.module.category" id="module_point_of_sale_button_access">
+            <field name="name">Button Access(Point of Sale)</field>
+            <field name="sequence">302</field>
+        </record>
+        <record id="group_invoice_pos_access_ws" model="res.groups">
+            <field name="name">Invoice</field>
+            <field name="category_id" ref="odoo_button_access_right.module_point_of_sale_button_access"/>
+        </record>
+        <record id="group_return_products_pos_access_ws" model="res.groups">
+            <field name="name">Return Products</field>
+            <field name="category_id" ref="odoo_button_access_right.module_point_of_sale_button_access"/>
+        </record>
+    </data>
+</odoo>

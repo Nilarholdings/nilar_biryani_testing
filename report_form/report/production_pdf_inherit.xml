@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_mrporder_inherit" inherit_id="mrp.report_mrporder">
+        <xpath expr="//span[@t-field='o.product_qty']" position="replace">
+            <span t-field="o.product_multi_uom_qty"/>
+        </xpath>
+        <xpath expr="//span[@t-field='o.product_uom_id.name']" position="replace">
+            <span t-field="o.multi_uom_line_id" groups="uom.group_uom"/>
+        </xpath>
+<!--        <xpath expr="//span[@t-field='raw_line.quantity_done']" position="replace">-->
+<!--            <span t-field="raw_line.multi_quantity_done"/>-->
+<!--        </xpath>-->
+        <xpath expr="//span[@t-field='raw_line.product_uom_qty']" position="replace">
+            <span t-field="raw_line.multi_uom_qty"/>
+        </xpath>
+        <xpath expr="//span[@t-field='raw_line.product_uom']" position="replace">
+            <span t-field="raw_line.multi_uom_line_id" groups="uom.group_uom"/>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+       <record id="model_access_right_lines_tree" model="ir.ui.view">
+            <field name="name">model.access_right.lines.tree</field>
+            <field name="model">model.access_right.lines</field>
+            <field name="arch" type="xml">
+                    <tree editable="bottom" edit = '1' >
+                        <field name = 'model_id' string = ' ' />
+<!--                        <field name = 'can_create' />-->
+<!--                        <field name = 'can_edit' />-->
+<!--                        <field name = 'can_delete' />-->
+                    </tree>
+            </field>
+       </record>
+       <record id="view_users_form_user_model_access_right" model="ir.ui.view">
+            <field name="name">res.users.form</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+                <page name="access_rights" position="after">
+                    <page name="model_access_right" string="Model Access Rights">
+                        <group>
+                            <group>
+                                <field name="control_model_actions" string = 'Readonly Mode'/>
+                            </group>
+                            <newline />
+                            <p style = "display: block;
+                                        width: 100%;
+                                        background: #f3f3f3;
+                                        padding: 15px 10px;
+                                        border-radius: 7px;
+                                        margin: 10px 0 5px 0;
+                            ">
+                                In Readonly Mode, user can <b>only view records</b>.Can't do create, edit, delete actions. If you wanna allow user to do that actions in some models, you can add those models to exclusions.
+                            </p>
+                            <div attrs="{'invisible': [('control_model_actions', '=', False)]}" style = 'width: 100%; margin-top: 20px;'>
+                                <label for = 'model_access_right_lines' style = 'font-size: 20px; font-weight: bold' />
+                                <field
+                                    name = 'model_access_right_lines'
+                                    widget = "many2many"
+                                    nolabel = '1'
+                                >
+                                    <tree editable="bottom" edit = '1' >
+                                        <field name = 'model_id' string = ' ' width = '100px'/>
+                                        <field name = 'can_create' />
+                                        <field name = 'can_edit' />
+                                        <field name = 'can_delete' />
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <group colspan = '4'>
+                                                <field name = 'model_id' options = "{'no_create': True}"/>
+                                            </group>
+                                            <group string = 'Permissions'>
+                                                <field name = 'can_create' />
+                                                <field name = 'can_edit' />
+                                                <field name = 'can_delete' />
+                                            </group>
+                                        </group>
+                                    </form>
+                                </field>
+                            </div>
+                        </group>
+                    </page>
+                </page>
+            </field>
+        </record>
+
+    </data>
+</odoo>

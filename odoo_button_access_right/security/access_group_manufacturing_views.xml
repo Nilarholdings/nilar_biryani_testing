@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <!-- Manufacturing Module Button Access Right-->
+        <record model="ir.module.category" id="module_manufacturing_button_access">
+            <field name="name">Button Access(Manufacturing)</field>
+            <field name="sequence">306</field>
+        </record>
+        <record id="group_confirm_access_mo" model="res.groups">
+            <field name="name">Confirm(MO)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_manufacturing_button_access"/>
+        </record>
+        <record id="group_create_mo_produce_access_mo" model="res.groups">
+            <field name="name">Create MO Produce</field>
+            <field name="category_id" ref="odoo_button_access_right.module_manufacturing_button_access"/>
+        </record>
+        <record id="group_mark_as_done_access_mo" model="res.groups">
+            <field name="name">Mark as Done</field>
+            <field name="category_id" ref="odoo_button_access_right.module_manufacturing_button_access"/>
+        </record>
+        <record id="group_unreserve_access_mo" model="res.groups">
+            <field name="name">Unreserve</field>
+            <field name="category_id" ref="odoo_button_access_right.module_manufacturing_button_access"/>
+        </record>
+        <record id="group_lock_unlock_access_mo" model="res.groups">
+            <field name="name">Lock/Unlock</field>
+            <field name="category_id" ref="odoo_button_access_right.module_manufacturing_button_access"/>
+        </record>
+        <record id="group_unbuild_access_mo" model="res.groups">
+            <field name="name">Unbuild</field>
+            <field name="category_id" ref="odoo_button_access_right.module_manufacturing_button_access"/>
+        </record>
+        <record id="group_cancel_access_mo" model="res.groups">
+            <field name="name">Cancel</field>
+            <field name="category_id" ref="odoo_button_access_right.module_manufacturing_button_access"/>
+        </record>
+        <record id="group_confirm_access_mo_product" model="res.groups">
+            <field name="name">Confirm(MO to Produce)</field>
+            <field name="category_id" ref="odoo_button_access_right.module_manufacturing_button_access"/>
+        </record>
+    </data>
+</odoo>

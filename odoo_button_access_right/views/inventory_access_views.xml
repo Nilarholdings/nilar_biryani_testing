@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_picking_form_button_access_inherit" model="ir.ui.view">
+            <field name="name">stock.picking.form.inherit</field>
+            <field name="model">stock.picking</field>
+            <field name="priority">99</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_cancel']" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_cancel_access_transfer</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_confirm']" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_mark_as_to_do_access_transfer</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_toggle_is_locked'][1]" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_lock_unlock_access_transfer</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_toggle_is_locked'][2]" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_lock_unlock_access_transfer</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_set_quantities_to_reservation']" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_set_quantities_access_transfer</attribute>
+                </xpath>
+                <xpath expr="//button[@name='button_validate'][1]" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_validate_access_transfer</attribute>
+                </xpath>
+                <xpath expr="//button[@name='button_validate'][2]" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_validate_access_transfer</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_put_in_pack']" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_put_in_pack_access_transfer</attribute>
+                </xpath>
+                <xpath expr="//button[@name='%(stock.act_stock_return_picking)d']" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_return_access_transfer</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_stock_quant_tree_inventory_editable_button_access_inherit" model="ir.ui.view">
+            <field name="name">stock.quant.tree.inherit</field>
+            <field name="model">stock.quant</field>
+            <field name="priority">99</field>
+            <field name="inherit_id" ref="stock.view_stock_quant_tree_inventory_editable"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='stock.action_stock_inventory_adjustement_name']" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_apply_access_adjustment</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_reset']" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_clear_access_adjustment</attribute>
+                </xpath>
+                <xpath expr="//button[@name='stock.action_stock_request_count']" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_request_a_count_access_adjustment</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record id="stock_multi_scrap_form_view_button_access_inherit" model="ir.ui.view">
+            <field name="name">stock.multi.scrap.form.inherit</field>
+            <field name="model">stock.multi.scrap</field>
+            <field name="priority">99</field>
+            <field name="inherit_id" ref="stock_multi_scrap.stock_multi_scrap_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_validate']" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_validate_access_multi_scrap</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_vehicle_invoice_forms_view_button_access_inherit" model="ir.ui.view">
+            <field name="name">stock.repackaging.form.inherit</field>
+            <field name="model">stock.repackaging</field>
+            <field name="priority">99</field>
+            <field name="inherit_id" ref="repackaging.view_vehicle_invoice_forms"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_confirm']" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_repackage_access_unpacking</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_done']" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_validate_access_unpacking</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_resettodraft']" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_reset_access_unpacking</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_stock_packaging_form_view_button_access_inherit" model="ir.ui.view">
+            <field name="name">stock.packaging.form.inherit</field>
+            <field name="model">stock.packaging</field>
+            <field name="priority">99</field>
+            <field name="inherit_id" ref="stock_packaging.view_stock_packaging_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='btn_package']" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_package_access_packing</attribute>
+                </xpath>
+                <xpath expr="//button[@name='btn_validate']" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_validate_access_packing</attribute>
+                </xpath>
+                <xpath expr="//button[@name='btn_set_to_draft']" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_reset_access_packing</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_requestion_form_view_button_access_inherit" model="ir.ui.view">
+            <field name="name">stock.requestion.form.inherit</field>
+            <field name="model">stock.requestion</field>
+            <field name="priority">99</field>
+            <field name="inherit_id" ref="stock_requestion.view_requestion_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_verified'][2]" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_set_to_verified_access_sr</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

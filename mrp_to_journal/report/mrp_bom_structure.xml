@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_mrp_bom_inherit" inherit_id="mrp.report_mrp_bom">
+        <xpath expr="//table[hasclass('o_mrp_bom_expandable')]//tbody//tr//td[4]" position="replace">
+            <td groups="uom.group_uom"><span><t t-esc="data['bom'].multi_uom_line_id.uom_id.name"/></span></td>
+        </xpath>
+        <xpath expr="//table[hasclass('o_mrp_bom_expandable')]//tfoot//tr//td[@groups='uom.group_uom']" position="replace">
+            <td groups="uom.group_uom"><span><t t-esc="data['bom'].multi_uom_line_id.uom_id.name"/></span></td>
+        </xpath>
+
+    </template>
+</odoo>

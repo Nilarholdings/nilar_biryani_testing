@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="barcode_excel_report" model="ir.actions.report">
+        <field name="name">Product Barcode Report(Excel)</field>
+        <field name="model">product.template</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">barcode_excel.barcode_excel_report</field>
+        <field name="report_file">barcode_excel.barcode_excel_report</field>
+        <field name="print_report_name">'Product Barcode Report(Excel)'</field>
+        <field name="binding_model_id" ref="product.model_product_template"/>
+    </record>
+</odoo>

@@ -1,0 +1,24 @@
+<odoo>
+    <data>
+        <menuitem id="menu_pos_line_stock_report"
+                    name="POS Line Report"
+                    action="pos_stock_report_action"
+                    sequence="101"
+                    parent="point_of_sale.menu_point_rep"/>
+<!--        <menuitem id="menu_pos_sub_location"-->
+<!--                    name="POS Sub Location"-->
+<!--                    action="pos_sub_stock_action"-->
+<!--                    sequence="55"-->
+<!--                    parent="point_of_sale.menu_point_config_product"/>-->
+<!--        <menuitem id="menu_pos_sub_location_report"-->
+<!--                    name="POS Sub-Location Report"-->
+<!--                    action="pos_sub_location_report_action"-->
+<!--                    sequence="102"-->
+<!--                    parent="point_of_sale.menu_point_rep"/>-->
+        <menuitem id="menu_stock_received_report"
+                    name="Stock Received Report"
+                    action="stock_received_report_action"
+                    sequence="103"
+                    parent="point_of_sale.menu_point_rep"/>
+    </data>
+</odoo>

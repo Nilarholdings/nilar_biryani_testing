@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_order_form_access" model="ir.ui.view">
+            <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_quotation_send']" position="after">
+                     <button name="confirm_so" string="Confirm" type="object"
+                            icon="fa-check" class="oe_highlight"
+                            groups="user_access_right.group_sale_confirm"
+                            attrs="{'invisible': [('state', 'not in', ['draft'])]}" />
+                     <button name="verify_so" string="Verify" type="object" icon="fa-bookmark-o"
+                            attrs="{'invisible': [('state', 'not in', ['confirm'])]}"
+                            groups="user_access_right.group_sale_verified" class="oe_highlight"/>
+                </xpath>
+                <xpath expr="//button[@id='action_confirm']" position="replace">
+                </xpath>
+                <xpath expr="//button[@name='action_confirm']" position="replace">
+                     <button name="action_confirm" data-hotkey="v" string="APPROVE"
+                            groups="user_access_right.group_sale_approve" class="oe_highlight"
+                            type="object" attrs="{'invisible': [('state', 'not in', ['verified'])]}"/>
+                </xpath>
+                <xpath expr="//button[@name='action_cancel']" position="replace">
+                    <button name="action_cancel" type="object" string="Cancel"
+                            groups="user_access_right.group_sale_cancel"
+                            attrs="{'invisible': ['|', ('state', 'not in', ['draft','sent','confirm','verified','sale']), ('id', '=', False)]}"
+                            data-hotkey="z"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

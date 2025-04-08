@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+<t t-name="ReceiptScreen" t-inherit="point_of_sale.ReceiptScreen" t-inherit-mode="extension" owl="1">
+    <xpath expr="//div[hasclass('buttons')]" position="after">
+        <div class="buttons" style="display: block !important;">
+            <t t-if="env.pos.config.kitchen_print and currentOrder.is_printChanges() and !is_changePrint">
+                 <div class="button print" style="margin: inherit;" t-on-click="printReceiptAndKitchen">
+                    <i class="fa fa-print"></i> Print Receipt and Kitchen
+                </div>
+                <div class="button print" style="margin: inherit;" t-on-click="PrintChanges">
+                    <i class="fa fa-print"></i> Print Kitchen Receipt
+                </div>
+            </t>
+        </div>
+    </xpath>
+
+</t>
+
+</templates>

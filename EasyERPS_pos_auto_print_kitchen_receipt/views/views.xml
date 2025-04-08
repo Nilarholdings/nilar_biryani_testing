@@ -1,0 +1,40 @@
+<odoo>
+  <data>
+    <record id="view_users_form" model="ir.ui.view">
+        <field name="name">res.users.view.form.inherit.pos.button.visibility</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='security']" position="after">
+                <page string="Point of Sales" name="point_of_sales">
+                    <group>
+                        <field name="order"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="pos_config_view_form_inherit_pos" model="ir.ui.view">
+        <field name="name">pos.config.form.inherit.pos</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='auto_printing']//div[hasclass('o_setting_right_pane')]" position="after">
+                <div class="content-group mt16" attrs="{'invisible': [('module_pos_restaurant', '=', False)]}">
+                    <div>
+                        <field name="kitchen_print_auto" class="oe_inline"/><span class="oe_inline"><b>Print Kitchen receipts automatically once the payment is registered</b></span>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="//div[@id='is_order_printer']//div[hasclass('o_setting_right_pane')]" position="after">
+                <div class="content-group mt16" attrs="{'invisible': [('is_order_printer', '=', False)]}">
+                    <div>
+                        <field name="kitchen_print" class="oe_inline"/><span class="oe_inline"><b>Show Print kitchen receipt Button on Receipt Screen</b></span>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+  </data>
+</odoo>

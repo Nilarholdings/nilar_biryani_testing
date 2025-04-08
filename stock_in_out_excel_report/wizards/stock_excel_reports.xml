@@ -1,0 +1,67 @@
+<odoo>
+    <record id="report_stock_in_out_report" model="ir.actions.report">
+        <field name="name">Stock Summary Report</field>
+        <field name="model">stock.move.line</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">stock_in_out_excel_report.stock_in_out_excel_report</field>
+        <field name="report_file">stock_in_out_excel_report.stock_in_out_excel_report</field>
+        <field name="print_report_name">'Stock Summary Report'</field>
+    </record>
+    <record id="view_purchase_excel_wizard_form" model="ir.ui.view">
+        <field name="name">stock.excel.reports.wizard.form</field>
+        <field name="model">stock.excel.reports</field>
+        <field name="arch" type="xml">
+            <form>
+              <sheet>
+                    <group class="mb-3">
+                        <group>
+                            <field name="start_date"/>
+                          
+                        </group>
+                        <group>
+                          
+                            <field name="end_date"/>
+                        </group>
+                    </group>
+                   
+                    <group>
+                          
+                        <group string="Locations">
+                               <field name="location_ids"
+                                       widget="many2many_tags"
+                                       domain="[('usage', '=', 'internal')]"
+                                       options="{'no_create': True}"/>
+    <!--                                   domain="[('id', 'in', available_location_ids)]"-->
+                            
+                        </group>
+                        <group string="Products" >
+                          
+                                <field name="product_ids" nolabel="1" widget="many2many_tags"/>
+                           
+                        </group>
+                    </group>
+
+                </sheet>
+                <footer>
+                    <button special="cancel" string="CANCEL" class="btn-danger"/>
+                    -
+                    <button name="btn_print" string="PRINT" type="object" class="oe_highlight"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_purchase_detail_report" model="ir.actions.act_window">
+        <field name="name">Stock Summary Report</field>
+        <field name="res_model">stock.excel.reports</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_stock_in_out_wizard"
+              name="Stock Summary Report"
+              parent="stock.menu_warehouse_report"
+              action="action_purchase_detail_report"
+              sequence="20"/>
+
+
+</odoo>

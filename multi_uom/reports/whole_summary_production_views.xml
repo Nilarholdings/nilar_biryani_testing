@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="whole_retail_production_summary_report_tree" model="ir.ui.view">
+            <field name="name">whole.retail.production.report.tree</field>
+            <field name="model">whole.retail.production.report</field>
+            <field name="inherit_id" ref="sale_requisition.whole_retail_production_summary_report_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='uom_id']" position="after">
+                    <field name="multi_uom_line_id"/>
+                </xpath>
+            </field>
+        </record>
+         <record id="whole_retail_production_summary_report_search" model="ir.ui.view">
+            <field name="name">whole.retail.production.report.search</field>
+            <field name="model">whole.retail.production.report</field>
+            <field name="inherit_id" ref="sale_requisition.whole_retail_production_summary_report_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='request_qty']" position="after">
+                    <field name="multi_uom_line_id"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

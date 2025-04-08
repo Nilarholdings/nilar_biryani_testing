@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="purchase_order_form_access" model="ir.ui.view">
+            <field name="name">purchase.order.form.access</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form//header//button[@name='button_confirm'][@states='draft']" position="before">
+                    <button name="action_confirm" string="Confirm"
+                            type="object" class="oe_highlight"
+                            attrs="{'invisible': [('state', 'not in', ['draft','sent','to approved'])]}"
+                            groups="user_access_right.group_purchase_confirm"
+                    />
+                    <button name="action_verified"
+                            string="Verified"
+                            type="object"
+                            class="oe_highlight"
+                            attrs="{'invisible': [('state', 'not in', ['confirm'])]}"
+                            groups="user_access_right.group_purchase_verified"
+                    />
+                </xpath>
+                <xpath expr="//form//header//button[@name='button_confirm'][@states='sent']" position="replace">
+                    <button name="button_confirm" string="Approve" type="object"
+                            class="oe_highlight" id="bid_confirm"
+                            groups="user_access_right.group_purchase_approve"
+                            attrs="{'invisible': [('state', 'not in', ['verified'])]}"
+                            />
+                </xpath>
+                <xpath expr="//form//header//button[@name='button_cancel']" position="after">
+                     <button name="button_cancel"
+                             string="Cancel" type="object" groups="user_access_right.group_purchase_cancel"
+                             attrs="{'invisible': [('state', 'not in', ['draft','sent','to approve','confirm','verified','purchase'])]}"
+                             data-hotkey="x"/>
+
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

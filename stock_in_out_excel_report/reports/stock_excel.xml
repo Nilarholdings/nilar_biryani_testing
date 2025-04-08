@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="stock_detail_report_excel" model="ir.actions.report">
+        <field name="name">Stock Excel Report</field>
+        <field name="model">stock.picking</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">stock_in_out_excel_report.stock_detail_report_excel</field>
+        <field name="report_file">stock_in_out_excel_report.stock_detail_report_excel</field>
+    </record>
+</odoo>

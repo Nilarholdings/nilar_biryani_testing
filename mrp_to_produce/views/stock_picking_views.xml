@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_stock_picking_report_pivot" model="ir.ui.view">
+        <field name="name">stock.picking.report.pivot</field>
+        <field name="model">stock.picking.report</field>
+        <field name="arch" type="xml">
+            <pivot string="Stock Picking Analysis">
+                <field name="analytic_account_id" type="col"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="stock_picking_report_tree" model="ir.ui.view">
+        <field name="name">stock.picking.report.tree</field>
+        <field name="model">stock.picking.report</field>
+        <field name="arch" type="xml">
+            <tree string="Stock Picking Analysis" create="false">
+                <field name="name"/>
+                <field name="location_id" optional="show"/>
+                <field name="location_dest_id" optional="show"/>
+                <field name="partner_id" optional="show"/>
+                <field name="user_id" optional="hide"/>
+                <field name="scheduled_date"/>
+                <field name="analytic_account_id" optional="show"/>
+                <field name="origin" optional="show"/>
+                <field name="picking_type_id" optional="hide"/>
+                <field name="state" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="stock_picking_report_form" model="ir.ui.view">
+        <field name="name">stock.picking.report.form</field>
+        <field name="model">stock.picking.report</field>
+        <field name="arch" type="xml">
+            <form string="Stock Picking Analysis">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="location_id" optional="show"/>
+                            <field name="location_dest_id" optional="show"/>
+                            <field name="partner_id" optional="show"/>
+                            <field name="user_id" optional="hide"/>
+                        </group>
+                        <group>
+                            <field name="scheduled_date"/>
+                            <field name="analytic_account_id" optional="show"/>
+                            <field name="origin" optional="show"/>
+                            <field name="picking_type_id" optional="hide"/>
+                            <field name="state" optional="show"/>
+                        </group>
+                    </group>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="stock_picking_report_search" model="ir.ui.view">
+        <field name="name">stock.picking.report.search</field>
+        <field name="model">stock.picking.report</field>
+        <field name="arch" type="xml">
+            <search string="Stock Picking Analysis">
+                <field name="name"/>
+                <field name="origin"/>
+                <field name="product_id"/>
+                <field name="default_code"/>
+                <field name="multi_uom_line_id"/>
+                <field name="product_packaging_id"/>
+                <field name="analytic_account_id"/>
+                <group expand="1" string="Group By">
+                    <separator/>
+                    <filter string="Picking" name="picking_id" context="{'group_by':'picking_id'}"/>
+                    <filter string="Product Family" name="product_family_id" context="{'group_by': 'product_family_id'}"/>
+                    <filter string="Analytic" name="analytic_account_id" context="{'group_by':'analytic_account_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_stock_picking_report" model="ir.actions.act_window">
+        <field name="name">Stock Picking Analysis</field>
+        <field name="res_model">stock.picking.report</field>
+        <field name="view_mode">tree,form,pivot</field>
+        <field name="view_id"/>
+        <field name="search_view_id" ref="stock_picking_report_search"/>
+    </record>
+
+    <menuitem
+            id="menu_stock_picking_report"
+            name="Transfer Analysis"
+            action="action_stock_picking_report"
+            parent="stock.menu_warehouse_report"
+            sequence="105"/>
+</odoo>

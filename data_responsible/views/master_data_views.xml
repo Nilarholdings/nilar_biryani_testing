@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Product Category -->
+    <record id="product_category_list_view_inheritance" model="ir.ui.view">
+        <field name="name">product.category.tree.extend</field>
+        <field name="model">product.category</field>
+        <field name="inherit_id" ref="product.product_category_list_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='display_name']" position="after">
+                <field name="responsible_id"/>
+                <field name="is_used"/>
+
+            </xpath>
+        </field>
+    </record>
+    <record id="product_category_form_view_inheritance" model="ir.ui.view">
+        <field name="name">product.category.form.extend</field>
+        <field name="model">product.category</field>
+        <field name="inherit_id" ref="product.product_category_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='parent_id']" position="after">
+                <field name="responsible_id" options="{'no_create': True, 'no_open': True}" class="oe_inline"/>
+                <field name="is_used"/>
+
+            </xpath>
+        </field>
+    </record>
+    <!-- POS Product Category -->
+    <record id="product_pos_category_tree_view_inheritance" model="ir.ui.view">
+        <field name="name">pos.category.tree.extend</field>
+        <field name="model">pos.category</field>
+        <field name="inherit_id" ref="point_of_sale.product_pos_category_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='display_name']" position="after">
+                <field name="responsible_id"/>
+                <field name="is_used"/>
+                
+            </xpath>
+        </field>
+    </record>
+    <record id="product_pos_category_form_view_inheritance" model="ir.ui.view">
+        <field name="name">pos.category.form.extend</field>
+        <field name="model">pos.category</field>
+        <field name="inherit_id" ref="point_of_sale.product_pos_category_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='sequence']" position="after">
+                <field name="responsible_id" options="{'no_create': True, 'no_open': True}"/>
+                <field name="is_used"/>
+               
+            </xpath>
+        </field>
+    </record>
+    <!-- Product Family -->
+    <record id="view_family_tree_view_inheritance" model="ir.ui.view">
+        <field name="name">product.family.tree.extend</field>
+        <field name="model">product.family</field>
+        <field name="inherit_id" ref="product_extend.view_family_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="responsible_id" optional="show"/>
+                <field name="is_used" optional="show"/>
+
+            </xpath>
+        </field>
+    </record>
+    <record id="product_family_form_view_inheritance" model="ir.ui.view">
+        <field name="name">product.family.form.extend</field>
+        <field name="model">product.family</field>
+        <field name="inherit_id" ref="product_extend.view_family_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="responsible_id" options="{'no_create': True, 'no_open': True}"/>
+                <field name="is_used"/>
+            </xpath>
+        </field>
+    </record>
+    <!-- Product Group -->
+    <record id="view_group_tree_view_inheritance" model="ir.ui.view">
+        <field name="name">product.group.tree.extend</field>
+        <field name="model">product.group</field>
+        <field name="inherit_id" ref="product_extend.view_group_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="responsible_id" optional="show"/>
+                <field name="is_used" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="product_group_form_view_inheritance" model="ir.ui.view">
+        <field name="name">product.group.form.extend</field>
+        <field name="model">product.group</field>
+        <field name="inherit_id" ref="product_extend.view_group_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="responsible_id" options="{'no_create': True, 'no_open': True}"/>
+                <field name="is_used"/>
+            </xpath>
+        </field>
+    </record>
+    <!-- Product Brand -->
+    <record id="view_brand_tree_view_inheritance" model="ir.ui.view">
+        <field name="name">product.brand.tree.extend</field>
+        <field name="model">product.brand</field>
+        <field name="inherit_id" ref="product_extend.view_brand_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='short_code']" position="after">
+                <field name="responsible_id" optional="show"/>
+                <field name="is_used" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="product_brand_form_view_inheritance" model="ir.ui.view">
+        <field name="name">product.brand.form.extend</field>
+        <field name="model">product.brand</field>
+        <field name="inherit_id" ref="product_extend.view_brand_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='short_code']" position="after">
+                <field name="responsible_id" options="{'no_create': True, 'no_open': True}"/>
+                <field name="is_used"/>
+            </xpath>
+        </field>
+    </record>
+    <!-- Stock Warehouse -->
+    <record id="view_warehouse_tree_inheritance" model="ir.ui.view">
+        <field name="name">stock.warehouse.tree.extend</field>
+        <field name="model">stock.warehouse</field>
+        <field name="inherit_id" ref="stock.view_warehouse_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="responsible" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_warehouse_inheritance" model="ir.ui.view">
+        <field name="name">stock.warehouse.form.extend</field>
+        <field name="model">stock.warehouse</field>
+        <field name="inherit_id" ref="stock.view_warehouse"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="responsible" options="{'no_create': True, 'no_open': True}"/>
+            </xpath>
+            <!-- <xpath expr="//field[@name='code']" position="attributes">
+                <attribute name="size">10</attribute>
+            </xpath> -->
+            <xpath expr="//field[@name='code']" position="replace">
+                <field name="code" placeholder="e.g. CW"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

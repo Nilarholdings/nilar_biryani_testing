@@ -1,0 +1,27 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_order_form_inherit_">
+            <field name="name">view.sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//field[@name='team_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                     <attribute name="options">{'no_create': True, 'no_open': True}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                     <field name="analytic_account_id"
+                           context="{'default_partner_id':partner_invoice_id, 'default_name':name}"
+                           attrs="{'readonly': ['|',('invoice_count','!=',0),('state','=','sale')]}"
+                           groups="analytic.group_analytic_accounting" force_save="1"
+                            options="{'no_create': True,'no_open': True}"/>
+                    <field name="warehouse_id" options="{'no_create': True,'no_open': True}"/>
+                    <field name="team_id" kanban_view_ref="459" options="{'no_create': True,'no_open': True}"/>
+				</xpath>
+
+            </field>
+        </record>
+
+    </data>
+</odoo>
+

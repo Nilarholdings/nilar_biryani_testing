@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="mrp_cost_structure_inherit" inherit_id="mrp_account_enterprise.mrp_cost_structure">
+        <xpath expr="//strong[hasclass('o_mrp_report_info')][1]" position="replace">
+            <strong t-esc="line['product'].display_name"/>, <t t-esc="line['mo_multi_qty']"/> <t t-esc="line['multi_uom_line_id'].uom_id.name"/>, from <t t-esc="line['mocount']"/> manufacturing order(s).
+        </xpath>
+        <xpath expr="//table[hasclass('o_mrp_report_table')][1]//tbody//tr//td[2]" position="replace">
+            <td class="text-right">
+                <span t-esc="m['multi_qty']" t-options='{"widget": "float", "decimal_precision": "Product Unit of Measure"}'/>
+                <span t-esc="m['multi_uom_line_id'].uom_id.name"/>
+            </td>
+        </xpath>
+
+    </template>
+</odoo>

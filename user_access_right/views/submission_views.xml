@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_purchase_requisition_form_access" model="ir.ui.view">
+            <field name="name">submission.quotation.form.access</field>
+            <field name="model">submission.quotation</field>
+            <field name="inherit_id" ref="submission_of_quotation.view_purchase_requisition_form"/>
+            <field name="arch" type="xml">
+                <button name="action_submit" position="replace">
+                    <button name="action_submit" string="Submit" type="object"
+                            class="oe_highlight" groups="user_access_right.group_sq_submit"
+                            attrs="{'invisible': [('state', 'not in', ['draft'])]}"/>
+                </button>
+                <button name="action_confirm" position="replace">
+                    <button name="action_confirm" string="Confirm" type="object"
+                            class="oe_highlight" groups="user_access_right.group_sq_confirm"
+                            attrs="{'invisible': [('state', 'not in', ['submit'])]}"/>
+                </button>
+                <button name="action_checked" position="replace">
+                    <button name="action_checked" string="Checked" type="object"
+                            class="oe_highlight" groups="user_access_right.group_sq_check"
+                            attrs="{'invisible': [('state', 'not in', ['confirm'])]}"/>
+                </button>
+                <button name="action_approved" position="replace">
+                    <button name="action_approved" string="Approved" type="object"
+                            class="oe_highlight" groups="user_access_right.group_sq_approve"
+                            attrs="{'invisible': [('state', 'not in', ['checked'])]}"/>
+                </button>
+                <button name="action_cancel" position="replace">
+                    <button name="action_cancel" string="Cancel" type="object"
+                            class="oe_highlight" groups="user_access_right.group_sq_cancel"
+                            attrs="{'invisible': [('state', 'in', ['approved','cancel'])]}"/>
+
+                </button>
+            </field>
+        </record>
+    </data>
+</odoo>

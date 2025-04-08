@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="purchase_order_form_button_access_inherit" model="ir.ui.view">
+            <field name="name">purchase.order.form.inherit</field>
+            <field name="model">purchase.order</field>
+            <field name="priority">98</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_rfq_send'][1]" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_send_by_mail_access_po</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_rfq_send'][2]" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_send_by_mail_access_po</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_rfq_send'][3]" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_send_by_mail_access_po</attribute>
+                </xpath>
+                <xpath expr="//button[@name='button_draft']" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_set_to_draft_access_po</attribute>
+                </xpath>
+                <xpath expr="//button[@name='button_done']" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_lock_unlock_access_po</attribute>
+                </xpath>
+                <xpath expr="//button[@name='button_unlock']" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_lock_unlock_access_po</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_create_invoice'][1]" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_create_bill_access_po</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_create_invoice'][2]" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_create_bill_access_po</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record id="purchase_order_view_form_inherit_button_access_inherit" model="ir.ui.view">
+            <field name="name">purchase.order.form.inherit</field>
+            <field name="model">purchase.order</field>
+            <field name="priority">99</field>
+            <field name="inherit_id" ref="purchase_stock.purchase_order_view_form_inherit"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_view_picking']" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_receive_products_access_po</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_purchase_requisition_line_tree_button_access_inherit" model="ir.ui.view">
+            <field name="name">purchase.requisitions.line.form.inherit</field>
+            <field name="model">purchase.requisitions.line</field>
+            <field name="priority">99</field>
+            <field name="inherit_id" ref="nilar_purchase_requisition.view_purchase_requisition_line_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_purchase_agreement']" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_create_purchase_agg_access_pr</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_purchase_requisition_form_button_access_inherit" model="ir.ui.view">
+            <field name="name">purchase.requisition.form.inherit</field>
+            <field name="model">purchase.requisition</field>
+            <field name="priority">99</field>
+            <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_in_progress']" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_confirm_access_pa</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_cancel']" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_cancel_access_pa</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_draft']" position="attributes">
+                    <attribute name="groups">odoo_button_access_right.group_reset_to_draft_access_pa</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

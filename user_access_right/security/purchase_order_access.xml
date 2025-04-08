@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record model="ir.module.category" id="module_purchase_order_access">
+            <field name="name">Purchase Order Access</field>
+            <field name="sequence">207</field>
+        </record>
+        <record id="group_purchase_confirm" model="res.groups">
+            <field name="name">Access Purchase Confirm</field>
+            <field name="category_id" ref="user_access_right.module_purchase_order_access"/>
+        </record>
+         <record id="group_purchase_verified" model="res.groups">
+            <field name="name">Access Purchase Verified</field>
+            <field name="category_id" ref="user_access_right.module_purchase_order_access"/>
+        </record>
+        <record id="group_purchase_approve" model="res.groups">
+            <field name="name">Access Purchase Approved</field>
+            <field name="category_id" ref="user_access_right.module_purchase_order_access"/>
+        </record>
+        <record id="group_purchase_cancel" model="res.groups">
+            <field name="name">Access Purchase Cancel</field>
+            <field name="category_id" ref="user_access_right.module_purchase_order_access"/>
+        </record>
+    </data>
+</odoo>

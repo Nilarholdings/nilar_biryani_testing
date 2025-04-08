@@ -1,0 +1,5 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_pos_sub_stock,pos.sub.stock,model_pos_sub_stock,base.group_user,1,1,1,1
+access_product_stock_report,product.stock.report,model_product_stock_report,base.group_user,1,1,1,1
+access_pos_sub_report,pos.sub.report,model_pos_sub_report,base.group_user,1,1,1,1
+access_stock_received_report,stock.received.report,model_stock_received_report,base.group_user,1,1,1,1

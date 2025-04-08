@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pos_config_form_inherit" model="ir.ui.view">
+        <field name="name">pos.config.form.inherit</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr='//div[@id="inventory_location"]' position='after'>
+                <h2>Pos Product</h2>
+                <div class="row mt16 o_settings_container" id="pos_stock">
+                    <div class="col-xs-12 col-md-6 o_setting_box" title="Show quantity available in POS.">
+                        <div class="o_setting_left_pane">
+                            <field name="show_qty_available" />
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="show_qty_available" string="Pos Product By Location" />
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-xs-12 col-md-6 o_setting_box" attrs="{'invisible':[('show_qty_available','=',False)]}">
+                        <div class="o_setting_left_pane">
+                            <field name="location_only" />
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="location_only" string="Count only for current POS Location" />
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-xs-12 col-md-6 o_setting_box" groups="stock.group_stock_multi_locations" attrs="{'invisible':[('show_qty_available','=',False)]}">
+                        <div class="o_setting_left_pane">
+                            <field name="hide_product" attrs="{'invisible':[('location_only','=',False)]}" />
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="hide_product" string="Hide Products not in POS Location" attrs="{'invisible':[('location_only','=',False)]}" />
+                            <div class="text-muted" attrs="{'invisible':[('location_only','=',False)]}">
+<!--                                Hide Products not in POS Location.-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

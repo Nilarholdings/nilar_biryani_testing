@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <!-- Custom Main Menu -->
+        <record model="ir.module.category" id="module_custom_menu_acess_cate">
+            <field name="name">Custom Menu Access</field>
+            <field name="sequence">306</field>
+        </record>
+        <record id="group_custom_menu_access" model="res.groups">
+            <field name="name">Access Custom Menu</field>
+            <field name="category_id" ref="ir_menu_extend.module_custom_menu_acess_cate"/>
+        </record>
+        <!-- Employee Menu -->
+        <record id="group_custom_employee_menu_access" model="res.groups">
+            <field name="name">Employee Menu</field>
+            <field name="category_id" ref="ir_menu_extend.module_custom_menu_acess_cate"/>
+        </record>
+        <!-- Detail for Employee Access -->
+        <record id="group_custom_employee_info" model="res.groups">
+            <field name="name">Allowed Employee Info</field>
+            <field name="category_id" ref="ir_menu_extend.module_custom_menu_acess_cate"/>
+        </record>
+<!--        <record id="group_custom_pos_counter_control" model="res.groups">-->
+<!--            <field name="name">Allow POS counter Tab</field>-->
+<!--            <field name="category_id" ref="ir_menu_extend.module_custom_menu_acess_cate"/>-->
+<!--        </record>-->
+<!--        <record id="group_custom_allowed_analytic_and_journal" model="res.groups">-->
+<!--            <field name="name">Allowed Analytic and Journal Tab</field>-->
+<!--            <field name="category_id" ref="ir_menu_extend.module_custom_menu_acess_cate"/>-->
+<!--        </record>-->
+        <!-- Product Menu -->
+        <record id="group_custom_product_menu_access" model="res.groups">
+            <field name="name">Product Menu</field>
+            <field name="category_id" ref="ir_menu_extend.module_custom_menu_acess_cate"/>
+        </record>
+        <!-- Others -->
+        <record id="group_no_back_order_access" model="res.groups">
+            <field name="name">No Backorder Access</field>
+            <field name="category_id" ref="base.module_category_hidden" />
+        </record>
+    </data>
+</odoo>
